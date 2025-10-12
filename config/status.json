@@ -1,0 +1,40 @@
+{
+  "rotation_interval": 20,
+  "statuses": [
+    {
+      "type": "watching",
+      "name": "HEAT Labs",
+      "message": "Watching HEAT Labs"
+    },
+    {
+      "type": "watching",
+      "name": "{server_count} servers",
+      "message": "Watching server count"
+    },
+    {
+      "type": "listening",
+      "name": "{user_count} users",
+      "message": "listening to users"
+    },
+    {
+      "type": "playing",
+      "name": "with tanks",
+      "message": "Playing with tanks"
+    },
+    {
+      "type": "listening",
+      "name": "your commands",
+      "message": "Listening to commands"
+    },
+    {
+      "type": "watching",
+      "name": "HEATLabs.NET",
+      "message": "Watching HEATLabs.NET"
+    },
+    {
+      "type": "playing",
+      "name": "World of Tanks: HEAT",
+      "message": "Playing World of Tanks: HEAT"
+    }
+  ]
+}
