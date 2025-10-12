@@ -1,0 +1,28 @@
+{
+  "domains": [
+    {
+      "pageName": "HEAT Labs Website",
+      "pageURL": "https://heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Statistics",
+      "pageURL": "https://statistics.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Status",
+      "pageURL": "https://status.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Changelog",
+      "pageURL": "https://changelog.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Socials",
+      "pageURL": "https://social.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Discord",
+      "pageURL": "https://discord.heatlabs.net"
+    }
+  ]
+}
