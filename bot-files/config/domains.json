@@ -29,6 +29,11 @@
       "pageName": "HEAT Labs Discord",
       "pageDescription": "Instant invite and redirect page to join the official HEAT Labs Discord community.",
       "pageURL": "https://discord.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Discord Bot",
+      "pageDescription": "The official HEAT Labs bot designed to fetch live data and stats from our systems.",
+      "pageURL": "https://bot.heatlabs.net"
     }
   ]
 }
