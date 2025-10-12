@@ -3,8 +3,10 @@ from discord.ext import commands
 from discord import app_commands
 import json
 import os
-import logging
 from modules.embeds import create_embed
+from modules.logger import get_logger
+
+logger = get_logger()
 
 
 class DomainsCommands(commands.Cog):
@@ -18,11 +20,12 @@ class DomainsCommands(commands.Cog):
             if os.path.exists(self.config_file):
                 with open(self.config_file, "r") as f:
                     data = json.load(f)
+                    logger.info("Domains data loaded successfully")
                     return data.get("domains", [])
-            logging.error(f"Domains file not found: {self.config_file}")
+            logger.warning(f"Domains file not found: {self.config_file}")
             return []
         except Exception as e:
-            logging.error(f"Error loading domains: {e}")
+            logger.error(f"Error loading domains: {e}")
             return []
 
     @app_commands.command(
@@ -33,6 +36,9 @@ class DomainsCommands(commands.Cog):
         await interaction.response.defer(thinking=True)
 
         embed = create_embed(command_name="Domains", color="#ff8300")
+        logger.info(
+            f"Domains command invoked by {interaction.user} in guild {interaction.guild.name}"
+        )
 
         domains = self.load_domains()
 
@@ -41,6 +47,9 @@ class DomainsCommands(commands.Cog):
                 "⚠️ Failed to load domains data. Please try again later."
             )
             await interaction.followup.send(embed=embed)
+            logger.warning(
+                f"Domains command failed: No domains loaded for {interaction.user}"
+            )
             return
 
         try:
@@ -61,9 +70,12 @@ class DomainsCommands(commands.Cog):
                 )
 
             await interaction.followup.send(embed=embed)
+            logger.info(
+                f"Domains command completed successfully for {interaction.user}"
+            )
 
         except Exception as e:
-            logging.error(f"Error processing domains: {e}")
+            logger.error(f"Error processing domains for {interaction.user}: {e}")
             embed.description = (
                 "⚠️ Error processing domains data. Please try again later."
             )
@@ -72,3 +84,4 @@ class DomainsCommands(commands.Cog):
 
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(DomainsCommands(bot))
+    logger.info("DomainsCommands cog loaded")
