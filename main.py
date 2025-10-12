@@ -3,15 +3,13 @@ from discord.ext import commands
 import os
 import asyncio
 from dotenv import load_dotenv
-import logging
+from modules.logger import get_logger
 
 # Load environment variables
 load_dotenv()
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
+# Get logger instance
+logger = get_logger()
 
 
 class HEATLabsBot(commands.Bot):
@@ -20,26 +18,31 @@ class HEATLabsBot(commands.Bot):
         intents.message_content = True
 
         super().__init__(command_prefix="!", intents=intents, help_command=None)
+        logger.info("HEAT Labs Bot initialized")
 
     # Load all command modules
     async def setup_hook(self):
         loaded = []
+        failed = []
         for filename in os.listdir("./commands"):
             if filename.endswith(".py") and not filename.startswith("__"):
                 module_name = f"commands.{filename[:-3]}"
                 try:
                     await self.load_extension(module_name)
                     loaded.append(module_name)
-                    logging.info(f"Successfully loaded: {module_name}")
+                    logger.info(f"Successfully loaded: {module_name}")
                 except Exception as e:
-                    logging.error(f"Failed to load {module_name}: {e}")
+                    logger.error(f"Failed to load {module_name}: {e}")
+                    failed.append((module_name, str(e)))
 
         await self.tree.sync()
-        logging.info("Commands synced with Discord")
+        logger.info(
+            f"Commands synced with Discord ({len(loaded)} loaded, {len(failed)} failed)"
+        )
 
     async def on_ready(self):
-        logging.info(f"{self.user} has connected to Discord!")
-        logging.info(f"Bot is ready and serving {len(self.guilds)} guilds")
+        logger.info(f"{self.user} has connected to Discord!")
+        logger.info(f"Bot is ready and serving {len(self.guilds)} guilds")
 
         # Sync servers with the servers.json file
         try:
@@ -47,39 +50,40 @@ class HEATLabsBot(commands.Bot):
 
             tracker = ServerTracker()
             tracker.sync_servers(self.guilds)
-            logging.info("Server sync completed successfully")
+            logger.info("Server sync completed successfully")
         except Exception as e:
-            logging.error(f"Error during server sync: {e}")
+            logger.error(f"Error during server sync: {e}")
 
         # Set bot status
         activity = discord.Activity(
             type=discord.ActivityType.watching, name="HEAT Labs"
         )
         await self.change_presence(activity=activity)
+        logger.info("Bot status updated")
 
     # Called when the bot joins a new guild
     async def on_guild_join(self, guild):
-        logging.info(f"Joined new guild: {guild.name} (ID: {guild.id})")
+        logger.info(f"Joined new guild: {guild.name} (ID: {guild.id})")
         try:
             from modules.servers import ServerTracker
 
             tracker = ServerTracker()
             tracker.add_server(guild)
-            logging.info(f"Added {guild.name} to server tracker")
+            logger.info(f"Added {guild.name} to server tracker")
         except Exception as e:
-            logging.error(f"Error adding guild to tracker: {e}")
+            logger.error(f"Error adding guild to tracker: {e}")
 
     # Called when the bot is removed from a guild
     async def on_guild_remove(self, guild):
-        logging.info(f"Removed from guild: {guild.name} (ID: {guild.id})")
+        logger.info(f"Removed from guild: {guild.name} (ID: {guild.id})")
         try:
             from modules.servers import ServerTracker
 
             tracker = ServerTracker()
             tracker.remove_server(guild.id)
-            logging.info(f"Removed {guild.name} from server tracker")
+            logger.info(f"Removed {guild.name} from server tracker")
         except Exception as e:
-            logging.error(f"Error removing guild from tracker: {e}")
+            logger.error(f"Error removing guild from tracker: {e}")
 
 
 async def main():
@@ -88,7 +92,7 @@ async def main():
     try:
         await bot.start(os.getenv("DISCORD_TOKEN"))
     except Exception as e:
-        logging.error(f"Error starting bot: {e}")
+        logger.error(f"Error starting bot: {e}")
 
 
 if __name__ == "__main__":
