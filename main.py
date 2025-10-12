@@ -42,7 +42,7 @@ class HEATLabsBot(commands.Bot):
 
     async def on_ready(self):
         logger.info(f"{self.user} has connected to Discord!")
-        logger.info(f"Bot is ready and serving {len(self.guilds)} guilds")
+        logger.info(f"Bot is serving {len(self.guilds)} guilds")
 
         # Sync servers with the servers.json file
         try:
@@ -54,12 +54,15 @@ class HEATLabsBot(commands.Bot):
         except Exception as e:
             logger.error(f"Error during server sync: {e}")
 
-        # Set bot status
-        activity = discord.Activity(
-            type=discord.ActivityType.watching, name="HEAT Labs"
-        )
-        await self.change_presence(activity=activity)
-        logger.info("Bot status updated")
+        # Start status rotation task
+        try:
+            from modules.status import StatusRotator
+
+            self.status_rotator = StatusRotator(self)
+            await self.status_rotator.start_rotation()
+            logger.info("Status rotation started")
+        except Exception as e:
+            logger.error(f"Error starting status rotation: {e}")
 
     # Called when the bot joins a new guild
     async def on_guild_join(self, guild):
