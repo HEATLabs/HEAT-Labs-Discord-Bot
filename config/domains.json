@@ -2,26 +2,32 @@
   "domains": [
     {
       "pageName": "HEAT Labs Website",
+      "pageDescription": "The central hub for all HEAT Labs projects, research, and community updates.",
       "pageURL": "https://heatlabs.net"
     },
     {
       "pageName": "HEAT Labs Statistics",
+      "pageDescription": "Real-time analytics dashboard showing activity, performance, and global stats.",
       "pageURL": "https://statistics.heatlabs.net"
     },
     {
       "pageName": "HEAT Labs Status",
+      "pageDescription": "Live monitoring platform displaying uptime, outages, and maintenance updates.",
       "pageURL": "https://status.heatlabs.net"
     },
     {
       "pageName": "HEAT Labs Changelog",
+      "pageDescription": "Detailed daily changelog tracking all updates, improvements, and fixes made.",
       "pageURL": "https://changelog.heatlabs.net"
     },
     {
       "pageName": "HEAT Labs Socials",
+      "pageDescription": "Unified landing page linking all official HEAT Labs social and community profiles.",
       "pageURL": "https://social.heatlabs.net"
     },
     {
       "pageName": "HEAT Labs Discord",
+      "pageDescription": "Instant invite and redirect page to join the official HEAT Labs Discord community.",
       "pageURL": "https://discord.heatlabs.net"
     }
   ]
