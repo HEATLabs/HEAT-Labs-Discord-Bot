@@ -2,6 +2,9 @@ import json
 import os
 from datetime import datetime
 import discord
+from modules.logger import get_logger
+
+logger = get_logger()
 
 
 class ServerTracker:
@@ -13,11 +16,11 @@ class ServerTracker:
     def _ensure_config_exists(self):
         if not os.path.exists(self.config_dir):
             os.makedirs(self.config_dir)
-            print(f"Created {self.config_dir} directory")
+            logger.info(f"Created {self.config_dir} directory")
 
         if not os.path.exists(self.servers_file):
             self._write_servers([])
-            print(f"Created {self.servers_file}")
+            logger.info(f"Created {self.servers_file}")
 
     def _read_servers(self) -> list:
         try:
@@ -25,12 +28,17 @@ class ServerTracker:
                 data = json.load(f)
                 return data.get("servers", [])
         except (json.JSONDecodeError, FileNotFoundError):
+            logger.warning(f"Error reading servers file: {self.servers_file}")
             return []
 
     def _write_servers(self, servers: list):
-        data = {"servers": servers}
-        with open(self.servers_file, "w") as f:
-            json.dump(data, f, indent=2)
+        try:
+            data = {"servers": servers}
+            with open(self.servers_file, "w") as f:
+                json.dump(data, f, indent=2)
+            logger.debug(f"Servers file written: {len(servers)} entries")
+        except Exception as e:
+            logger.error(f"Error writing servers file: {e}")
 
     def sync_servers(self, guilds: list):
         current_servers = self._read_servers()
@@ -43,7 +51,7 @@ class ServerTracker:
             if guild.id not in current_ids:
                 self._add_server_internal(guild, current_servers)
                 added_count += 1
-                print(f"Added to server list: {guild.name} (ID: {guild.id})")
+                logger.info(f"Added to server list: {guild.name} (ID: {guild.id})")
 
         # Remove servers that the bot is no longer in
         removed_count = 0
@@ -53,15 +61,17 @@ class ServerTracker:
                 updated_servers.append(server)
             else:
                 removed_count += 1
-                print(
+                logger.info(
                     f"Removed from server list: {server['name']} (ID: {server['id']})"
                 )
 
         if added_count > 0 or removed_count > 0:
             self._write_servers(updated_servers)
-            print(f"Server sync complete: {added_count} added, {removed_count} removed")
+            logger.info(
+                f"Server sync complete: {added_count} added, {removed_count} removed"
+            )
         else:
-            print("Server sync complete: No changes needed")
+            logger.info("Server sync complete: No changes needed")
 
     def _add_server_internal(self, guild: discord.Guild, servers_list: list):
         server_entry = {
@@ -76,12 +86,12 @@ class ServerTracker:
 
         # Check if server already exists
         if any(server["id"] == guild.id for server in servers):
-            print(f"Server already in list: {guild.name} (ID: {guild.id})")
+            logger.warning(f"Server already in list: {guild.name} (ID: {guild.id})")
             return False
 
         self._add_server_internal(guild, servers)
         self._write_servers(servers)
-        print(f"Added to server list: {guild.name} (ID: {guild.id})")
+        logger.info(f"Added to server list: {guild.name} (ID: {guild.id})")
         return True
 
     def remove_server(self, guild_id: int):
@@ -91,7 +101,7 @@ class ServerTracker:
 
         if len(updated_servers) < initial_count:
             self._write_servers(updated_servers)
-            print(f"Removed server from list: {guild_id}")
+            logger.info(f"Removed server from list: {guild_id}")
             return True
         return False
 
