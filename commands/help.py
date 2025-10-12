@@ -28,10 +28,16 @@ class HelpCommands(commands.Cog):
             embed.add_field(
                 name="📚 Available Commands",
                 value=(
+                    "**`/tanks`** - "
+                    "Returns complete list of all tanks.\n"
                     "**`/tank {tank-name}`** - "
                     "Returns detailed information, stats, and background for the specified tank.\n"
+                    "**`/maps`** - "
+                    "Returns complete list of all maps.\n"
                     "**`/map {map-name}`** - "
                     "Displays map details including layout, features, and strategic overview.\n"
+                    "**`/agents`** - "
+                    "Returns complete list of all agents.\n"
                     "**`/agent {agent-name}`** - "
                     "Shows complete agent information such as abilities, stats, and tactical insights.\n"
                     "**`/domains`** - "
