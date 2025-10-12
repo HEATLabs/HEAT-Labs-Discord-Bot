@@ -1,0 +1,24 @@
+{
+  "socials": [
+    {
+      "socialName": "YouTube",
+      "socialURL": "https://www.youtube.com/@HEATLabs-Official"
+    },
+	{
+      "socialName": "GitHub",
+      "socialURL": "https://github.com/HEATLabs"
+    },
+	{
+      "socialName": "Twitter",
+      "socialURL": "https://x.com/HEAT_Labs"
+    },
+	{
+      "socialName": "Nexus Mods",
+      "socialURL": "https://next.nexusmods.com/profile/HEATLabs"
+    },
+	{
+      "socialName": "Discord",
+      "socialURL": "https://discord.com/invite/caEFCA9ScF"
+    }
+  ]
+}
