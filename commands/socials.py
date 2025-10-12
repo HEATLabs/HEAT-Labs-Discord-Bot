@@ -3,8 +3,10 @@ from discord.ext import commands
 from discord import app_commands
 import json
 import os
-import logging
 from modules.embeds import create_embed
+from modules.logger import get_logger
+
+logger = get_logger()
 
 
 class SocialsCommands(commands.Cog):
@@ -18,11 +20,12 @@ class SocialsCommands(commands.Cog):
             if os.path.exists(self.config_file):
                 with open(self.config_file, "r") as f:
                     data = json.load(f)
+                    logger.info("Socials data loaded successfully")
                     return data.get("socials", [])
-            logging.error(f"Socials file not found: {self.config_file}")
+            logger.warning(f"Socials file not found: {self.config_file}")
             return []
         except Exception as e:
-            logging.error(f"Error loading socials: {e}")
+            logger.error(f"Error loading socials: {e}")
             return []
 
     @app_commands.command(
@@ -33,6 +36,9 @@ class SocialsCommands(commands.Cog):
         await interaction.response.defer(thinking=True)
 
         embed = create_embed(command_name="Socials", color="#ff8300")
+        logger.info(
+            f"Socials command invoked by {interaction.user} in guild {interaction.guild.name}"
+        )
 
         socials = self.load_socials()
 
@@ -41,6 +47,9 @@ class SocialsCommands(commands.Cog):
                 "⚠️ Failed to load socials data. Please try again later."
             )
             await interaction.followup.send(embed=embed)
+            logger.warning(
+                f"Socials command failed: No socials loaded for {interaction.user}"
+            )
             return
 
         try:
@@ -61,9 +70,12 @@ class SocialsCommands(commands.Cog):
                 )
 
             await interaction.followup.send(embed=embed)
+            logger.info(
+                f"Socials command completed successfully for {interaction.user}"
+            )
 
         except Exception as e:
-            logging.error(f"Error processing socials: {e}")
+            logger.error(f"Error processing socials for {interaction.user}: {e}")
             embed.description = (
                 "⚠️ Error processing socials data. Please try again later."
             )
@@ -72,3 +84,4 @@ class SocialsCommands(commands.Cog):
 
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(SocialsCommands(bot))
+    logger.info("SocialsCommands cog loaded")
