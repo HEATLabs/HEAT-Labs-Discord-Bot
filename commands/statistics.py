@@ -3,11 +3,12 @@ from discord.ext import commands
 from discord import app_commands
 import aiohttp
 import asyncio
-import logging
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any, List
-import json
 from modules.embeds import create_embed
+from modules.logger import get_logger
+
+logger = get_logger()
 
 
 class HeatLabsCommands(commands.Cog):
@@ -27,13 +28,15 @@ class HeatLabsCommands(commands.Cog):
         try:
             async with self.session.get(url) as response:
                 if response.status == 200:
-                    return await response.json()
-                logging.error(
+                    data = await response.json()
+                    logger.info(f"Data fetched successfully from {url}")
+                    return data
+                logger.warning(
                     f"Failed to fetch data from {url}: HTTP {response.status}"
                 )
                 return None
         except Exception as e:
-            logging.error(f"Error fetching data from {url}: {e}")
+            logger.error(f"Error fetching data from {url}: {e}")
             return None
 
     # Fetch fresh data from both APIs and update cache
@@ -45,16 +48,18 @@ class HeatLabsCommands(commands.Cog):
             )
 
             if stats is None or pixel_config is None:
-                logging.error("Failed to fetch one or more data sources")
+                logger.error(
+                    "Failed to fetch one or more data sources for cache refresh"
+                )
                 return False
 
             self.cache["stats"] = stats
             self.cache["pixel_config"] = pixel_config
             self.cache["last_updated"] = datetime.utcnow()
-            logging.info("HEAT labs cache refreshed successfully")
+            logger.info("HEAT Labs cache refreshed successfully")
             return True
         except Exception as e:
-            logging.error(f"Error refreshing HEAT Labs cache: {e}")
+            logger.error(f"Error refreshing HEAT Labs cache: {e}")
             return False
 
     # Get the human-readable page name from the pixel filename
@@ -108,7 +113,7 @@ class HeatLabsCommands(commands.Cog):
         return {
             "total_views": total_views,
             "thirty_day_views": thirty_day_views,
-            "top_pages": top_pages[:10],  # Only keep top 10
+            "top_pages": top_pages[:10],
         }
 
     @app_commands.command(
@@ -118,20 +123,28 @@ class HeatLabsCommands(commands.Cog):
     async def heatlabs(self, interaction: discord.Interaction) -> None:
         await interaction.response.defer(thinking=True)
 
-        # Create embed with standardized header
         embed = create_embed(command_name="Statistics", color="#ff8300")
+        logger.info(
+            f"Statistics command invoked by {interaction.user} in guild {interaction.guild.name}"
+        )
 
         success = await self.refresh_cache()
 
         if not success:
             embed.description = "⚠️ Failed to fetch fresh data from HEAT Labs API. Please try again later."
             await interaction.followup.send(embed=embed)
+            logger.warning(
+                f"Statistics command failed: Cache refresh unsuccessful for {interaction.user}"
+            )
             return
 
         try:
             if not self.cache["stats"] or not self.cache["pixel_config"]:
                 embed.description = "⚠️ Received incomplete data from HEAT Labs API."
                 await interaction.followup.send(embed=embed)
+                logger.warning(
+                    f"Statistics command failed: Incomplete data for {interaction.user}"
+                )
                 return
 
             stats = self.calculate_stats(self.cache["stats"])
@@ -167,9 +180,12 @@ class HeatLabsCommands(commands.Cog):
                 )
 
             await interaction.followup.send(embed=embed)
+            logger.info(
+                f"Statistics command completed successfully for {interaction.user}"
+            )
 
         except Exception as e:
-            logging.error(f"Error processing HEAT Labs data: {e}")
+            logger.error(f"Error processing HEAT Labs data for {interaction.user}: {e}")
             embed.description = (
                 "⚠️ Error processing HEAT Labs data. Please try again later."
             )
@@ -177,7 +193,9 @@ class HeatLabsCommands(commands.Cog):
 
     def cog_unload(self) -> None:
         asyncio.create_task(self.session.close())
+        logger.info("HeatLabsCommands cog unloaded")
 
 
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(HeatLabsCommands(bot))
+    logger.info("HeatLabsCommands cog loaded")
