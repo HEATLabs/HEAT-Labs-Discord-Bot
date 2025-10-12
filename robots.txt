@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bot.heatlabs.net/site-data/sitemap.xml
