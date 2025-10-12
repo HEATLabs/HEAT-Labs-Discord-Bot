@@ -1,3 +1,9 @@
 {
-  "servers": []
+  "servers": [
+    {
+      "name": "SINEWAVE Development",
+      "id": 1232199448688590899,
+      "date_added": "2025-10-12T12:06:13.016927"
+    }
+  ]
 }
