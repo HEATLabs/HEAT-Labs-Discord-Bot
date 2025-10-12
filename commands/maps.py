@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import aiohttp
+import json
 from modules.embeds import create_embed
 from modules.logger import get_logger
 
@@ -19,8 +20,6 @@ class MapsListCommands(commands.Cog):
             async with self.session.get(self.maps_url) as response:
                 if response.status == 200:
                     text = await response.text()
-                    import json
-
                     data = json.loads(text)
                     logger.info("Maps data fetched successfully")
                     return data
@@ -70,9 +69,10 @@ class MapsListCommands(commands.Cog):
                 inline=False,
             )
 
-            embed.set_footer(
-                text=f"Total Maps: {len(maps)}",
-                icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
+            embed.add_field(
+                name="📊 Total",
+                value=f"{len(maps)} Map{'s' if len(maps) != 1 else ''}",
+                inline=True,
             )
 
             await interaction.followup.send(embed=embed)

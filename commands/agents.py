@@ -147,9 +147,10 @@ class AgentsListCommands(commands.Cog):
                     await interaction.followup.send(embed=embed)
                     return
 
-            embed.set_footer(
-                text=f"Total Agents: {total_agents}",
-                icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
+            embed.add_field(
+                name="📊 Total",
+                value=f"{total_agents} Agent{'s' if total_agents != 1 else ''}",
+                inline=True,
             )
 
             await interaction.followup.send(embed=embed)

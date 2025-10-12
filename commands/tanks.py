@@ -107,9 +107,10 @@ class TanksListCommands(commands.Cog):
                 )
                 total_tanks = len(tank_names)
 
-            embed.set_footer(
-                text=f"Total Tanks: {total_tanks}",
-                icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
+            embed.add_field(
+                name="📊 Total",
+                value=f"{total_tanks} Tank{'s' if total_tanks != 1 else ''}",
+                inline=True,
             )
 
             await interaction.followup.send(embed=embed)
