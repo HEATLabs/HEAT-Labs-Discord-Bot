@@ -1,0 +1,236 @@
+/* HEAT Labs Discord Bot Page Styles */
+.bot-intro {
+    margin-top: -40px;
+}
+
+.bot-feature-card {
+    color: var(--text-primary);
+    background: var(--bg-dark-secondary);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border-left: 4px solid var(--accent-color);
+}
+
+.light-theme .bot-feature-card {
+    color: var(--text-primary);
+    background: var(--bg-light-secondary);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border-left: 4px solid var(--accent-color);
+}
+
+.bot-feature-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .bot-feature-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.command-section {
+	background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+}
+
+.btn-invite {
+	transition: all 0.3s ease;
+	min-width: 200px;
+	background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+}
+
+.btn-invite:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+}
+
+.btn-source {
+	transition: all 0.3s ease;
+	min-width: 200px;
+	background: linear-gradient(135deg, #333 0%, #555 100%);
+}
+
+.btn-source:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.command-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1rem;
+}
+
+.command-card {
+	background: white;
+	border-radius: 8px;
+	padding: 1.5rem;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.dark-theme .command-card {
+	background: var(--bg-secondary);
+	border: 1px solid #374151;
+}
+
+.command-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.command-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.command-icon {
+	font-size: 1.5rem;
+	margin-right: 0.75rem;
+	color: var(--accent-color);
+}
+
+.command-name {
+	font-family: 'Courier New', monospace;
+	background: var(--bg-tertiary);
+	padding: 0.25rem 0.5rem;
+	border-radius: 4px;
+	font-weight: 600;
+}
+
+.command-description {
+	color: var(--text-secondary);
+	line-height: 1.5;
+}
+
+.architecture-section {
+	background: var(--bg-secondary);
+	border-radius: 12px;
+	padding: 2rem;
+}
+
+.architecture-step {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+	background: var(--bg-light-tertiary);
+	border-radius: 8px;
+	transition: transform 0.3s ease;
+}
+
+.dark-theme .architecture-step {
+	background: var(--bg-tertiary);
+}
+
+.architecture-step:hover {
+	transform: translateX(5px);
+}
+
+.step-number {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: var(--accent-color);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	margin-right: 1rem;
+	flex-shrink: 0;
+}
+
+.step-content h4 {
+	margin-bottom: 0.5rem;
+	color: var(--text-primary);
+}
+
+.step-content p {
+	color: var(--text-secondary);
+	margin: 0;
+}
+
+.bot-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1.5rem;
+	margin: 2rem 0;
+}
+
+.stat-card {
+	text-align: center;
+	padding: 1.5rem;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .stat-card {
+	background: var(--bg-secondary);
+}
+
+.stat-number {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: var(--accent-color);
+	margin-bottom: 0.5rem;
+}
+
+.stat-label {
+	color: var(--text-secondary);
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.transparency-badge {
+	display: inline-flex;
+	align-items: center;
+	background: rgba(34, 197, 94, 0.1);
+	color: #22c55e;
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-size: 0.9rem;
+	margin: 1rem 0;
+}
+
+.dark-theme .transparency-badge {
+	background: rgba(34, 197, 94, 0.2);
+}
+
+.light-theme .faq-item {
+    color: var(--text-primary);
+    background: var(--bg-light-secondary);
+}
+
+.faq-item {
+    color: var(--text-primary);
+    background: var(--bg-dark-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.command-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.bot-stats {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.architecture-step {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.step-number {
+		margin-right: 0;
+		margin-bottom: 0.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.bot-stats {
+		grid-template-columns: 1fr;
+	}
+}
