@@ -172,11 +172,6 @@ class TankCommands(commands.Cog):
                             inline=False,
                         )
 
-            embed.set_footer(
-                text=f"Tank ID: {tank.get('id', 'N/A')} | {tank.get('nation', 'Unknown')}",
-                icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
-            )
-
             await interaction.followup.send(embed=embed)
             logger.info(
                 f"Tank command completed successfully for {interaction.user} (Tank: {tank['name']})"
