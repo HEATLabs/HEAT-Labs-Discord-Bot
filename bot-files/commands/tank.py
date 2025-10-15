@@ -13,7 +13,7 @@ class TankCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
-        self.tanks_url = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/tanks.json"
+        self.tanks_url = ""https://cdn1.heatlabs.net/tanks.json"
 
     # Fetch JSON data from URL
     async def fetch_data(self, url: str):
