@@ -14,7 +14,7 @@ class TournamentCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
-        self.tournaments_url = "https://cdn.jsdelivr.net/gh/HEATLabs/HEAT-Labs-Configs@main/tournaments.json"
+        self.tournaments_url = "https://cdn1.heatlabs.net/tournaments.json"
 
     async def fetch_data(self, url: str):
         try:
