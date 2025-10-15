@@ -13,7 +13,7 @@ class MapCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
-        self.maps_url = ""https://cdn1.heatlabs.net/maps.json"
+        self.maps_url = "https://cdn1.heatlabs.net/maps.json"
 
     async def fetch_maps(self):
         try:
