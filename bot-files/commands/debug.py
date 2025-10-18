@@ -196,7 +196,7 @@ class DebugCommands(commands.Cog):
             # Add cog status
             cog_text = ""
             for cog in cog_status["cogs"]:
-                cog_text += f"**{cog['name']}**\n"
+                cog_text += f"**{cog['name']}**, "
 
             embed.add_field(
                 name="⚙️ Loaded Cogs", value=cog_text or "No cogs found", inline=False
