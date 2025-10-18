@@ -4,6 +4,7 @@ import os
 import asyncio
 from dotenv import load_dotenv
 from modules.logger import get_logger
+from modules.cooldown import global_cooldown
 
 # Load environment variables
 load_dotenv()
@@ -18,6 +19,9 @@ class HEATLabsBot(commands.Bot):
         intents.message_content = True
 
         super().__init__(command_prefix="!", intents=intents, help_command=None)
+
+        # Check global cooldown
+        self.tree.interaction_check = global_cooldown.interaction_check
         logger.info("HEAT Labs Bot initialized")
 
     # Load all command modules
