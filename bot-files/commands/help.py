@@ -48,6 +48,8 @@ class HelpCommands(commands.Cog):
                     "Returns complete list of all players - *In Development*\n"
                     "**`/player {player-name}`** - "
                     "Returns detailed information and stats for the specified player - *In Development*\n"
+                    "**`/contact`** - "
+                    "Sends a message to the HEAT Labs team for reporting issues, suggest features, or share feedback.\n"
                     "**`/domains`** - "
                     "Shows a complete list of all active HEAT Labs domains and their respective purposes.\n"
                     "**`/socials`** - "
