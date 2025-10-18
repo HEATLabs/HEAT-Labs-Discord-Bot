@@ -28,38 +28,22 @@ class HelpCommands(commands.Cog):
             embed.add_field(
                 name="📚 Available Commands",
                 value=(
-                    "**`/tanks`** - "
-                    "Returns complete list of all tanks.\n"
-                    "**`/tank {tank-name}`** - "
-                    "Returns detailed information, stats, and background for the specified tank.\n"
-                    "**`/maps`** - "
-                    "Returns complete list of all maps.\n"
-                    "**`/map {map-name}`** - "
-                    "Displays map details including layout, features, and strategic overview.\n"
-                    "**`/agents`** - "
-                    "Returns complete list of all agents.\n"
-                    "**`/agent {agent-name}`** - "
-                    "Shows complete agent information such as abilities, stats, and tactical insights.\n"
-                    "**`/tournaments`** - "
-                    "Returns complete list of all tournaments.\n"
-                    "**`/tournament {agent-name}`** - "
-                    "Provides detailed information about a specific tournament, including teams and results.\n"
-                    "**`/players`** - "
-                    "Returns complete list of all players - *In Development*\n"
-                    "**`/player {player-name}`** - "
-                    "Returns detailed information and stats for the specified player - *In Development*\n"
-                    "**`/contact`** - "
-                    "Sends a message to the HEAT Labs team for reporting issues, suggest features, or share feedback.\n"
-                    "**`/domains`** - "
-                    "Shows a complete list of all active HEAT Labs domains and their respective purposes.\n"
-                    "**`/socials`** - "
-                    "Provides direct links to all official HEAT Labs social platforms and community pages.\n"
-                    "**`/team`** - "
-                    "Lists all current HEAT Labs team members along with their roles and contributions.\n"
-                    "**`/contributors`** - "
-                    "Lists all contributors who have helped improve the HEAT Labs project.\n"
-                    "**`/help`** - "
-                    "View this help menu with all available commands."
+                    "**`/tanks`** - Returns a list of all tanks.\n"
+                    "**`/tank {tank-name}`** - Shows detailed stats and background for a specific tank.\n"
+                    "**`/maps`** - Lists all available maps.\n"
+                    "**`/map {map-name}`** - Displays layout, features, and strategic overview of a map.\n"
+                    "**`/agents`** - Returns all agents.\n"
+                    "**`/agent {agent-name}`** - Shows abilities, stats, and tactical insights of an agent.\n"
+                    "**`/tournaments`** - Lists all tournaments.\n"
+                    "**`/tournament {tournament-name}`** - Provides details including teams and results.\n"
+                    "**`/players`** - Lists all players *[In Development]*.\n"
+                    "**`/player {player-name}`** - Shows stats for a specific player *[In Development]*.\n"
+                    "**`/contact`** - Send a one-way message to the HEAT Labs team for feedback or reports.\n"
+                    "**`/domains`** - Displays all active HEAT Labs domains and their purposes.\n"
+                    "**`/socials`** - Links to official HEAT Labs social platforms.\n"
+                    "**`/team`** - Lists all current HEAT Labs team members and roles.\n"
+                    "**`/contributors`** - Lists all project contributors.\n"
+                    "**`/help`** - Displays this help menu."
                 ),
                 inline=False,
             )
@@ -70,7 +54,7 @@ class HelpCommands(commands.Cog):
                 value=(
                     "• Use `/help` anytime to see this menu again.\n"
                     "• Command names are case-insensitive.\n"
-                    "• For more information, visit [HEAT Labs](https://heatlabs.net)"
+                    "• For more information, visit the bot's [documentation](https://discord.heatlabs.net)."
                 ),
                 inline=False,
             )
