@@ -7,29 +7,24 @@
       "message": "Watching HEAT Labs"
     },
     {
-      "type": "watching",
-      "name": "{server_count} servers",
-      "message": "Watching server count"
-    },
-    {
       "type": "listening",
       "name": "{user_count} users",
       "message": "listening to users"
     },
     {
       "type": "playing",
-      "name": "with tanks",
-      "message": "Playing with tanks"
-    },
-    {
-      "type": "listening",
-      "name": "your commands",
-      "message": "Listening to commands"
+      "name": "on HEAT Labs",
+      "message": "Playing on HEAT Labs"
     },
     {
       "type": "watching",
-      "name": "HEATLabs.NET",
-      "message": "Watching HEATLabs.NET"
+      "name": "{server_count} servers",
+      "message": "Watching servers"
+    },
+    {
+      "type": "listening",
+      "name": "HEAT Labs",
+      "message": "Listening to HEAT Labs"
     },
     {
       "type": "playing",
