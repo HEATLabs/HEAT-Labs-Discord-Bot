@@ -41,7 +41,19 @@ class GlobalCooldown:
                     icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
                 )
 
-                await interaction.response.send_message(embed=embed, ephemeral=True)
+                try:
+                    # Check if we can respond to the interaction
+                    if not interaction.response.is_done():
+                        await interaction.response.send_message(
+                            embed=embed, ephemeral=True
+                        )
+                    else:
+                        # If response is already done, use followup
+                        await interaction.followup.send(embed=embed, ephemeral=True)
+                except discord.errors.HTTPException as e:
+                    logger.error(f"Failed to send cooldown message: {e}")
+                    # If all else fails, just log the error and prevent the command
+
                 logger.info(
                     f"Cooldown triggered for user {interaction.user} - {remaining:.1f}s remaining"
                 )
