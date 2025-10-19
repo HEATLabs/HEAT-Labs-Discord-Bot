@@ -19,6 +19,10 @@ class GlobalCooldown:
 
     # Check if the user is on cooldown, called automatically by discord.py
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        # Skip cooldown check for autocomplete interactions
+        if interaction.type == discord.InteractionType.autocomplete:
+            return True
+
         user_id = interaction.user.id
         current_time = time.time()
 
