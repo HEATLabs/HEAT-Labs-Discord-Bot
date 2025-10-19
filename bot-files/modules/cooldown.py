@@ -10,7 +10,7 @@ logger = get_logger()
 class GlobalCooldown:
     def __init__(self):
         self.cooldown_seconds = int(
-            os.getenv("COMMAND_COOLDOWN", "15")
+            os.getenv("COMMAND_COOLDOWN", "10")
         )  # Fallback to 15 seconds
         self.user_cooldowns = {}
         logger.info(
