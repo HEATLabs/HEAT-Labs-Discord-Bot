@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 import json
 import os
+import requests
 from modules.embeds import create_embed
 from modules.logger import get_logger
 
@@ -12,18 +13,19 @@ logger = get_logger()
 class ContributorCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.config_file = "config/contributors.json"
+        self.config_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/config/contributors.json"
 
     # Load contributors from JSON file
     def load_contributor(self) -> list:
         try:
-            if os.path.exists(self.config_file):
-                with open(self.config_file, "r") as f:
-                    data = json.load(f)
-                    logger.info("Contributors data loaded successfully")
-                    return data.get("contributors", [])
-            logger.warning(f"Contributors file not found: {self.config_file}")
-            return []
+            response = requests.get(self.config_file)
+            if response.status_code == 200:
+                data = response.json()
+                logger.info("Contributor data loaded successfully")
+                return data.get("contributors", [])
+            else:
+                logger.warning(f"Failed to fetch contributors: HTTP {response.status_code}")
+                return []
         except Exception as e:
             logger.error(f"Error loading contributors: {e}")
             return []

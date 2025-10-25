@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 import json
 import os
+import requests
 from modules.embeds import create_embed
 from modules.logger import get_logger
 
@@ -12,18 +13,19 @@ logger = get_logger()
 class DomainsCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.config_file = "config/domains.json"
+        self.config_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/config/domains.json"
 
     # Load domains from JSON file
     def load_domains(self) -> list:
         try:
-            if os.path.exists(self.config_file):
-                with open(self.config_file, "r") as f:
-                    data = json.load(f)
-                    logger.info("Domains data loaded successfully")
-                    return data.get("domains", [])
-            logger.warning(f"Domains file not found: {self.config_file}")
-            return []
+            response = requests.get(self.config_file)
+            if response.status_code == 200:
+                data = response.json()
+                logger.info("Domains data loaded successfully")
+                return data.get("domains", [])
+            else:
+                logger.warning(f"Failed to fetch domains: HTTP {response.status_code}")
+                return []
         except Exception as e:
             logger.error(f"Error loading domains: {e}")
             return []
