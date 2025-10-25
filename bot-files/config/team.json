@@ -13,14 +13,6 @@
       "memberDescription": "Graphic Designer"
     },
 	{
-      "memberName": "New Members Wanted",
-      "memberDescription": "Sound Library Curator"
-    },
-	{
-      "memberName": "New Members Wanted",
-      "memberDescription": "3D Content Specialist"
-    },
-	{
       "memberName": "esmatty",
       "memberDescription": "Content Writer"
     },
@@ -35,6 +27,14 @@
 	{
       "memberName": "antitank99",
       "memberDescription": "Game Analyst"
+    },
+	{
+      "memberName": "New Members Wanted",
+      "memberDescription": "Sound Library Curator"
+    },
+	{
+      "memberName": "New Members Wanted",
+      "memberDescription": "3D Content Specialist"
     }
   ]
 }
