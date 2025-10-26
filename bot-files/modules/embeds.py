@@ -35,7 +35,7 @@ def create_embed(
 def add_embed_footer(embed: discord.Embed) -> discord.Embed:
     embed.set_footer(
         text="© 2025 HEAT Labs | Official Discord App",
-        icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/public-assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
+        icon_url="https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/assets/public-assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
     )
     embed.timestamp = datetime.now()
     return embed
