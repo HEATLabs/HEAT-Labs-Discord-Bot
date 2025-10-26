@@ -28,22 +28,17 @@ class HelpCommands(commands.Cog):
             embed.add_field(
                 name="📚 Available Commands",
                 value=(
-                    "**`/tanks`** - Returns a list of all tanks.\n"
-                    "**`/tank {tank-name}`** - Shows detailed stats and background for a specific tank.\n"
-                    "**`/maps`** - Lists all available maps.\n"
-                    "**`/map {map-name}`** - Displays layout, features, and strategic overview of a map.\n"
-                    "**`/agents`** - Returns all agents.\n"
-                    "**`/agent {agent-name}`** - Shows abilities, stats, and tactical insights of an agent.\n"
-                    "**`/tournaments`** - Lists all tournaments.\n"
-                    "**`/tournament {tournament-name}`** - Provides details including teams and results.\n"
-                    "**`/players`** - Lists all players *[In Development]*.\n"
-                    "**`/player {player-name}`** - Shows stats for a specific player *[In Development]*.\n"
-                    "**`/contact`** - Send a one-way message to the HEAT Labs team for feedback or reports.\n"
-                    "**`/domains`** - Displays all active HEAT Labs domains and their purposes.\n"
-                    "**`/socials`** - Links to official HEAT Labs social platforms.\n"
-                    "**`/team`** - Lists all current HEAT Labs team members and roles.\n"
-                    "**`/contributors`** - Lists all project contributors.\n"
-                    "**`/ping`** - Check the ping status of the bot."
+                    "**`/tank(s) {name}`** – View all tanks or detailed stats of one.\n"
+                    "**`/map(s) {name}`** – List all maps or view details and strategy of one.\n"
+                    "**`/agent(s) {name}`** – List all agents or see one’s abilities and stats.\n"
+                    "**`/tournament(s) {name}`** – View all tournaments or details of a specific one.\n"
+                    "**`/player(s) {name}`** – List or check stats of players *[In Development]*.\n"
+                    "**`/contact`** – Send feedback or reports to the HEAT Labs team.\n"
+                    "**`/domains`** – Show all active HEAT Labs domains.\n"
+                    "**`/socials`** – Get links to official HEAT Labs platforms.\n"
+                    "**`/team`** – View current HEAT Labs team members and roles.\n"
+                    "**`/contributors`** – Show all project contributors.\n"
+                    "**`/ping`** – Check bot latency."
                 ),
                 inline=False,
             )
