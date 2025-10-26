@@ -43,6 +43,7 @@ class HelpCommands(commands.Cog):
                     "**`/socials`** - Links to official HEAT Labs social platforms.\n"
                     "**`/team`** - Lists all current HEAT Labs team members and roles.\n"
                     "**`/contributors`** - Lists all project contributors.\n"
+                    "**`/ping`** - Check the ping status of the bot.\n"
                     "**`/help`** - Displays this help menu."
                 ),
                 inline=False,
