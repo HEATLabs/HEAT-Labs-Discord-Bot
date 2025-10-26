@@ -38,6 +38,7 @@ class HelpCommands(commands.Cog):
                     "**`/socials`** – Get links to official HEAT Labs platforms.\n"
                     "**`/team`** – View current HEAT Labs team members and roles.\n"
                     "**`/contributors`** – Show all project contributors.\n"
+                    "**`/status`** – Check the status of our systems.\n"
                     "**`/ping`** – Check bot latency."
                 ),
                 inline=False,
