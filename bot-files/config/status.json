@@ -2,19 +2,29 @@
   "rotation_interval": 20,
   "statuses": [
     {
+      "type": "playing",
+      "name": "Playing with fire",
+      "message": "Playing with fire"
+    },
+    {
       "type": "watching",
       "name": "Browsing HEAT Labs",
       "message": "Watching HEAT Labs"
     },
     {
+      "type": "watching",
+      "name": "Watching the servers melt",
+      "message": "Watching chaos unfold"
+    },
+    {
+      "type": "listening",
+      "name": "Listening to {user_count} bug reports",
+      "message": "Listening carefully"
+    },
+    {
       "type": "listening",
       "name": "Looking at {user_count} users",
       "message": "listening to users"
-    },
-    {
-      "type": "playing",
-      "name": "Playing on HEAT Labs",
-      "message": "Playing on HEAT Labs"
     },
     {
       "type": "watching",
@@ -23,13 +33,93 @@
     },
     {
       "type": "listening",
-      "name": "Loading HEAT Labs",
+      "name": "Listening to the hum of overheating GPUs",
+      "message": "Listening to fans (literally)"
+    },
+    {
+      "type": "playing",
+      "name": "Playing on HEAT Labs",
+      "message": "Playing on HEAT Labs"
+    },
+    {
+      "type": "watching",
+      "name": "Watching {server_count} servers argue over updates",
+      "message": "Watching drama"
+    },
+    {
+      "type": "playing",
+      "name": "Playing catch the 404",
+      "message": "Debugging life"
+    },
+    {
+      "type": "watching",
+      "name": "Watching for bugs in the shadows",
+      "message": "Bug surveillance active"
+    },
+    {
+      "type": "listening",
+      "name": "Loading to HEAT Labs",
       "message": "Listening to HEAT Labs"
+    },
+    {
+      "type": "listening",
+      "name": "Listening to Remmy whispering",
+      "message": "Caffeinated mode"
     },
     {
       "type": "playing",
       "name": "Playing World of Tanks: HEAT",
       "message": "Playing World of Tanks: HEAT"
+    },
+    {
+      "type": "playing",
+      "name": "Playing hide and seek with syntax errors",
+      "message": "Lost in the code again"
+    },
+    {
+      "type": "watching",
+      "name": "Watching HEAT Labs, through binoculars",
+      "message": "Observing suspicious activity"
+    },
+    {
+      "type": "listening",
+      "name": "Listening to broken scripts cry",
+      "message": "Console errors intensify"
+    },
+    {
+      "type": "watching",
+      "name": "Watching users press F5 repeatedly",
+      "message": "Monitoring refresh spammers"
+    },
+    {
+      "type": "playing",
+      "name": "Playing with the server power button",
+      "message": "Not my fault if it crashes"
+    },
+    {
+      "type": "listening",
+      "name": "Listening to {user_count} users in voice chat",
+      "message": "My ears hurt"
+    },
+    {
+      "type": "watching",
+      "name": "Watching AI learn sarcasm",
+      "message": "This won’t end well"
+    },
+    {
+      "type": "playing",
+      "name": "Playing with unstable prototypes",
+      "message": "Handle with caution"
+    },
+    {
+      "type": "watching",
+      "name": "Watching the devs push directly to main",
+      "message": "Holding my breath"
+    },
+    {
+      "type": "listening",
+      "name": "Listening for the sound of success (still waiting)",
+      "message": "Hope.exe not found"
     }
   ]
 }
