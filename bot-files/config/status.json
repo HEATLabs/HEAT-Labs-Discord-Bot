@@ -3,32 +3,32 @@
   "statuses": [
     {
       "type": "watching",
-      "name": "HEAT Labs",
+      "name": "Browsing HEAT Labs",
       "message": "Watching HEAT Labs"
     },
     {
       "type": "listening",
-      "name": "{user_count} users",
+      "name": "Looking at {user_count} users",
       "message": "listening to users"
     },
     {
       "type": "playing",
-      "name": "on HEAT Labs",
+      "name": "Playing on HEAT Labs",
       "message": "Playing on HEAT Labs"
     },
     {
       "type": "watching",
-      "name": "{server_count} servers",
+      "name": "Watching {server_count} servers",
       "message": "Watching servers"
     },
     {
       "type": "listening",
-      "name": "HEAT Labs",
+      "name": "Loading HEAT Labs",
       "message": "Listening to HEAT Labs"
     },
     {
       "type": "playing",
-      "name": "World of Tanks: HEAT",
+      "name": "Playing World of Tanks: HEAT",
       "message": "Playing World of Tanks: HEAT"
     }
   ]
