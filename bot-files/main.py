@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
+import traceback
 from dotenv import load_dotenv
 from modules.logger import get_logger
 from modules.cooldown import global_cooldown
@@ -28,6 +29,17 @@ class HEATLabsBot(commands.Bot):
     async def setup_hook(self):
         loaded = []
         failed = []
+
+        # Load monitor first
+        try:
+            await self.load_extension("modules.monitor")
+            loaded.append("modules.monitor")
+            logger.info("Successfully loaded: modules.monitor")
+        except Exception as e:
+            logger.error(f"Failed to load modules.monitor: {e}")
+            failed.append(("modules.monitor", str(e)))
+
+        # Load other command modules
         for filename in os.listdir("./commands"):
             if filename.endswith(".py") and not filename.startswith("__"):
                 module_name = f"commands.{filename[:-3]}"
@@ -57,6 +69,9 @@ class HEATLabsBot(commands.Bot):
             logger.info("Server sync completed successfully")
         except Exception as e:
             logger.error(f"Error during server sync: {e}")
+            # Send to monitor if available
+            if hasattr(self, 'monitor'):
+                await self.monitor.on_server_tracker_error(e)
 
         # Start status rotation task
         try:
@@ -67,6 +82,13 @@ class HEATLabsBot(commands.Bot):
             logger.info("Status rotation started")
         except Exception as e:
             logger.error(f"Error starting status rotation: {e}")
+            # Send to monitor if available
+            if hasattr(self, 'monitor'):
+                await self.monitor.on_status_rotation_error(e)
+
+        # Notify monitor that bot is ready
+        if hasattr(self, 'monitor'):
+            await self.monitor.on_bot_ready()
 
     # Called when the bot joins a new guild
     async def on_guild_join(self, guild):
