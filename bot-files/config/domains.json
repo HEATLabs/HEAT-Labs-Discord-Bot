@@ -34,6 +34,11 @@
       "pageName": "HEAT Labs Discord Bot",
       "pageDescription": "The official HEAT Labs bot designed to fetch live data and stats from our systems.",
       "pageURL": "https://bot.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Mods",
+      "pageDescription": "Official hub for browsing mods created by the HEAT Labs team and the community.",
+      "pageURL": "https://mods.heatlabs.net"
     }
   ]
 }
