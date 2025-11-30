@@ -51,6 +51,21 @@ class StatisticsCommands(commands.Cog):
             # Fallback
             return 0
 
+    # Calculate days since creation
+    def calculate_days_since_creation(self, creation_date_str: str) -> int:
+        try:
+            # Parse the creation date
+            creation_date = datetime.strptime(creation_date_str, "%B %d, %Y %H:%M:%S")
+            current_date = datetime.now()
+
+            # Calculate days difference
+            days_since_creation = (current_date - creation_date).days
+            return max(days_since_creation, 0)
+        except Exception as e:
+            logger.error(f"Error calculating days since creation: {e}")
+            # Fallback
+            return 0
+
     # Format creation date to remove time
     def format_creation_date(self, creation_date_str: str) -> str:
         try:
@@ -103,12 +118,16 @@ class StatisticsCommands(commands.Cog):
                 total_coffee = self.calculate_total_coffee(
                     creation_date_raw, coffee_per_day
                 )
+                days_since_creation = self.calculate_days_since_creation(
+                    creation_date_raw
+                )
             else:
                 creation_date = "Unknown"
                 total_coffee = 0
+                days_since_creation = 0
 
             # Add creation date and coffee stats
-            coffee_field_value = f"**Creation Date:** {creation_date}\n**Coffee Consumption:** around {coffee_per_day} cups per day"
+            coffee_field_value = f"**Creation Date:** {creation_date}\n**Days Since Creation:** {days_since_creation:,} days\n**Coffee Consumption:** {coffee_per_day} cups per day"
             if total_coffee > 0:
                 coffee_field_value += (
                     f"\n**Total Coffee Emptied:** {total_coffee:,} cups"
