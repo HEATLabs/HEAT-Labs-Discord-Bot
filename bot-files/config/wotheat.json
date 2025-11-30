@@ -1,0 +1,54 @@
+{
+  "wotheat": [
+    {
+      "pageName": "Xbox",
+      "pageDescription": "Official Xbox store page to download and play World of Tanks: HEAT.",
+      "pageURL": "https://www.xbox.com/ro-ro/games/store/world-of-tanks-heat/9n11jm7f5cxk"
+    },
+    {
+      "pageName": "Steam",
+      "pageDescription": "Official Steam store page to download and play World of Tanks: HEAT.",
+      "pageURL": "https://store.steampowered.com/app/2100280/World_of_Tanks_HEAT"
+    },
+    {
+      "pageName": "PlayStation",
+      "pageDescription": "Official PlayStation store page to download and play World of Tanks: HEAT.",
+      "pageURL": "https://store.playstation.com/en-ro/concept/10011450"
+    },
+    {
+      "pageName": "Discord",
+      "pageDescription": "Join the official Discord community for World of Tanks: HEAT game.",
+      "pageURL": "https://discord.com/invite/wot-heat"
+    },
+    {
+      "pageName": "Reddit",
+      "pageDescription": "Official Reddit community for World of Tanks: HEAT discussions.",
+      "pageURL": "https://www.reddit.com/r/wot_heat"
+    },
+    {
+      "pageName": "YouTube",
+      "pageDescription": "Official YouTube channel for World of Tanks: HEAT videos and content.",
+      "pageURL": "https://www.youtube.com/@wot_heat"
+    },
+    {
+      "pageName": "TikTok",
+      "pageDescription": "Official TikTok profile for World of Tanks: HEAT short videos.",
+      "pageURL": "https://www.tiktok.com/@wot_heat"
+    },
+    {
+      "pageName": "Instagram",
+      "pageDescription": "Official Instagram profile for World of Tanks: HEAT photos and updates.",
+      "pageURL": "https://www.instagram.com/wot_heat"
+    },
+    {
+      "pageName": "Facebook",
+      "pageDescription": "Official Facebook page for World of Tanks: HEAT news and community.",
+      "pageURL": "https://www.facebook.com/playwotheat"
+    },
+    {
+      "pageName": "Twitter",
+      "pageDescription": "Official Twitter profile for World of Tanks: HEAT news and updates.",
+      "pageURL": "https://x.com/wot_heat"
+    }
+  ]
+}
