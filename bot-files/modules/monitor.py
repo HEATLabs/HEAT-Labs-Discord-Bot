@@ -8,6 +8,7 @@ import asyncio
 import inspect
 from datetime import datetime
 from modules.logger import get_logger
+from modules.embeds import create_embed, add_embed_footer
 
 logger = get_logger()
 
@@ -31,34 +32,39 @@ class BotMonitor:
 
     # Send an embed to the webhook
     async def send_webhook_embed(
-        self, title: str, description: str, color: int, fields: list = None
+        self, title: str, description: str, color: str = "#ff8300", fields: list = None
     ):
         if not self.monitoring_enabled:
             return
 
         try:
-            embed = {
-                "title": title,
-                "description": description,
-                "color": color,
-                "timestamp": datetime.now().isoformat(),
-                "footer": {
-                    "text": "HEAT Labs Bot Monitor",
-                    "icon_url": "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/assets/public-assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
-                },
-            }
+            # Use the standardized create_embed function
+            embed = create_embed(
+                title=title,
+                description=description,
+                color=color,
+            )
 
+            # Add fields if provided
             if fields:
-                embed["fields"] = fields
+                for field in fields:
+                    embed.add_field(
+                        name=field.get("name", "Field"),
+                        value=field.get("value", ""),
+                        inline=field.get("inline", True),
+                    )
+
+            # Add the standardized footer
+            embed = add_embed_footer(embed)
 
             data = {
-                "embeds": [embed],
+                "embeds": [embed.to_dict()],
                 "username": "HEAT Labs Bot Monitor",
                 "avatar_url": "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/assets/public-assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
             }
 
             async with self.session.post(self.webhook_url, json=data) as response:
-                if response.status == 204:
+                if response.status in (200, 204):
                     logger.debug(f"Monitor webhook sent: {title}")
                 else:
                     logger.warning(f"Failed to send webhook: HTTP {response.status}")
@@ -95,9 +101,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="🟢 Bot Started",
+            title="HEAT Labs - Bot Started",
             description=description,
-            color=0x22C55E,
+            color="#22C55E",
             fields=fields,
         )
 
@@ -119,9 +125,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="📥 Joined Server",
+            title="HEAT Labs - Joined Server",
             description=description,
-            color=0x3B82F6,
+            color="#3B82F6",
             fields=fields,
         )
 
@@ -138,9 +144,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="📤 Left Server",
+            title="HEAT Labs - Left Server",
             description=description,
-            color=0xEF4444,
+            color="#EF4444",
             fields=fields,
         )
 
@@ -204,9 +210,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="🚨 Command Error",
+            title="HEAT Labs - Command Error",
             description="A command error occurred",
-            color=0xEF4444,
+            color="#EF4444",
             fields=fields,
         )
 
@@ -248,9 +254,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="🚨 Slash Command Error",
+            title="HEAT Labs - Slash Command Error",
             description="An application command error occurred",
-            color=0xEF4444,
+            color="#EF4444",
             fields=fields,
         )
 
@@ -259,11 +265,11 @@ class BotMonitor:
         self, module_name: str, url: str, status_code: int, response_time: float
     ):
         color = (
-            0x10B981
+            "#10B981"
             if status_code == 200
-            else 0xF59E0B
+            else "#F59E0B"
             if status_code < 500
-            else 0xEF4444
+            else "#EF4444"
         )
 
         fields = [
@@ -282,7 +288,7 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="🌐 HTTP Request",
+            title="HEAT Labs - HTTP Request",
             description="External API request completed",
             color=color,
             fields=fields,
@@ -299,9 +305,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="⏰ Cooldown Triggered",
+            title="HEAT Labs - Cooldown Triggered",
             description="User hit command cooldown",
-            color=0xF59E0B,
+            color="#F59E0B",
             fields=fields,
         )
 
@@ -313,9 +319,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="🔄 Status Changed",
+            title="HEAT Labs - Status Changed",
             description="Bot status was updated",
-            color=0x8B5CF6,
+            color="#8B5CF6",
             fields=fields,
         )
 
@@ -366,9 +372,9 @@ class BotMonitor:
         ]
 
         await self.send_webhook_embed(
-            title="📈 Periodic Statistics",
+            title="HEAT Labs - Periodic Statistics",
             description="Bot usage statistics for the current session",
-            color=0x6366F1,
+            color="#6366F1",
             fields=fields,
         )
 
@@ -397,9 +403,9 @@ class BotMonitor:
             fields.insert(1, {"name": "🔍 Context", "value": context, "inline": True})
 
         await self.send_webhook_embed(
-            title="🚨 Module Error",
+            title="HEAT Labs - Module Error",
             description="A module error occurred",
-            color=0xF59E0B,
+            color="#F59E0B",
             fields=fields,
         )
 
