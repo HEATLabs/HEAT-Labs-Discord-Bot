@@ -12,7 +12,7 @@ logger = get_logger()
 class SocialsCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.config_file = "config/socials.json"
+        self.config_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/config/socials.json"
 
     # Load socials from JSON file
     def load_socials(self) -> list:
