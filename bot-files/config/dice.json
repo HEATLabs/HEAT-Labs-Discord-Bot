@@ -1,3 +1,34 @@
 {
-  "dice": []
+  "dice": [
+    {
+      "hash": "b732238c69c049e8b98bb5682d674116"
+    },
+	{
+      "hash": "78056866fa134001947e3c28d2416485"
+    },
+	{
+      "hash": "c22c23f4546743d8abbc9c4ccf943d4b"
+    },
+	{
+      "hash": "7fc7b82a3bf642e99f8515c0d2c83fdc"
+    },
+	{
+      "hash": "e49dd56aaef44f009a02dd0434316d75"
+    },
+	{
+      "hash": "9e4c6395e45442e1b06e84ba32a6e093"
+    },
+	{
+      "hash": "043d6bcfbec34aafbf5d0dcff61fdcd1"
+    },
+	{
+      "hash": "58a9251d9f9449399124b639c5e9320e"
+    },
+	{
+      "hash": "de822f339e45473f8266989c99bd74aa"
+    },
+	{
+      "hash": "7a8f7931af21417dbdc35fbb81624df7"
+    }
+  ]
 }
