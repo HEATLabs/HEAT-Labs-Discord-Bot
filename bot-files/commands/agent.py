@@ -13,7 +13,7 @@ class AgentCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
-        self.agents_url = "https://cdn1.heatlabs.net/agents.json"
+        self.agents_url = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/config/agents.json"
 
     async def fetch_agents(self):
         try:
