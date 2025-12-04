@@ -1,3 +1,91 @@
 {
-  "facts": []
+  "facts": [
+    {
+      "fact": "The AGDS concept used twin 35mm auto-cannons and missile pods, aiming to wipe out air targets with brutal burst fire."
+    },
+    {
+      "fact": "The ALVT was designed as a super-light tank hunter, prioritizing mobility over armor to strike and vanish."
+    },
+    {
+      "fact": "The AMX-10 RC is amphibious—its hydro-pneumatic suspension lets it 'kneel' for better firing angles."
+    },
+    {
+      "fact": "The BAT-4M is actually an engineering vehicle, using its power not to fight but to bulldoze, dig, and clear obstacles for armored units."
+    },
+    {
+      "fact": "The FV4030 series helped lay the groundwork for advanced Chobham armor concepts used on later Western tanks."
+    },
+    {
+      "fact": "The HSTV-L fired a hyper-velocity 75mm gun capable of flinging darts at extreme speeds for long-range penetration."
+    },
+    {
+      "fact": "This Leopard variant featured the A1 series upgrades with improved fire control and stabilization for better first-shot accuracy."
+    },
+    {
+      "fact": "The 1A6A1 was a late experimental Leopard fitted with thermal sights, giving it night-fighting capabilities far ahead of its era."
+    },
+    {
+      "fact": "The Leopard 2FK concept swapped the main gun for anti-tank missile launchers—an unusual twist for a tank that normally relies on kinetic rounds."
+    },
+    {
+      "fact": "This prototype era saw experimentation with modular armor packages that foreshadowed what modern 2A models eventually adopted."
+    },
+    {
+      "fact": "Railgun Abrams concepts explored electromagnetic launch tech that could theoretically push penetrators past Mach 7."
+    },
+    {
+      "fact": "The M1E1 was a testbed variant integrating early Abrams NBC protection systems and crew comfort upgrades for harsh environments."
+    },
+    {
+      "fact": "The M3A1 cavalry version carried extra sensors and optics instead of infantry seats, turning the Bradley into a fast reconnaissance hunter."
+    },
+    {
+      "fact": "The M60A3E2 tested enhanced armor blocks and fire control tweaks to squeeze more life out of the aging M60 platform."
+    },
+    {
+      "fact": "The BOT variant simulates unmanned or automated evaluation setups used for gunnery training and robotics research."
+    },
+    {
+      "fact": "The M60E2 mounted a different turret weapon system—famously including trials with aircraft-style machine gun setups."
+    },
+    {
+      "fact": "Object 279’s UFO-like hull made it resistant to landmines and blast waves—one of the strangest tank shapes ever built."
+    },
+    {
+      "fact": "Object 287 carried guided missiles in place of a traditional gun, representing the USSR’s brief fascination with gun-less tanks."
+    },
+    {
+      "fact": "The PTZ-89C is a Chinese tank destroyer variant built around a 120mm gun designed specifically for long-range anti-armor shots."
+    },
+    {
+      "fact": "The T-55 Enigma used improvised composite armor blocks that surprisingly resisted some early 90s anti-tank rounds."
+    },
+    {
+      "fact": "The T-62AV added Kontakt-1 ERA, giving the old T-62 a substantial leap in survivability against shaped-charge weapons."
+    },
+    {
+      "fact": "The T-62MS modernization added thermal sights and new electronics, pushing a 1960s tank into near-modern utility."
+    },
+    {
+      "fact": "The T-64A pioneered composite armor and an autoloader—features that became Soviet design signatures."
+    },
+    {
+      "fact": "The T-72AU field upgrade package mixed Kontakt-1 ERA, improved side armor, and updated optics for front-line survivability."
+    },
+    {
+      "fact": "The T-72B featured a reinforced turret with advanced composite layers, giving it one of the toughest turret fronts of its time."
+    },
+    {
+      "fact": "The XM1-90 concept explored a lighter Abrams fitted with a 90mm gun for experimental maneuver warfare roles."
+    },
+    {
+      "fact": "The XM1-V variant was part of early Abrams prototyping, evaluating engine and transmission alternatives."
+    },
+    {
+      "fact": "The XM551 Sheridan prototype led to one of the lightest U.S. air-droppable armored gun systems ever fielded."
+    },
+    {
+      "fact": "The XM808 ‘Twister’ used an articulated dual-body chassis, giving it spider-like flexibility over rough terrain."
+    }
+  ]
 }
