@@ -14,6 +14,8 @@ class StatisticsCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/home-stats.json"
+        self.changelog_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/changelog.json"
+        self.game_builds_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/game_builds.json"
 
     # Load statistics from JSON file
     def load_statistics(self) -> dict:
@@ -30,6 +32,40 @@ class StatisticsCommands(commands.Cog):
                 return {}
         except Exception as e:
             logger.error(f"Error loading statistics: {e}")
+            return {}
+
+    # Load changelog data
+    def load_changelog(self) -> dict:
+        try:
+            response = requests.get(self.changelog_file)
+            if response.status_code == 200:
+                data = response.json()
+                logger.info("Changelog data loaded successfully")
+                return data
+            else:
+                logger.warning(
+                    f"Failed to fetch changelog: HTTP {response.status_code}"
+                )
+                return {}
+        except Exception as e:
+            logger.error(f"Error loading changelog: {e}")
+            return {}
+
+    # Load game builds data
+    def load_game_builds(self) -> dict:
+        try:
+            response = requests.get(self.game_builds_file)
+            if response.status_code == 200:
+                data = response.json()
+                logger.info("Game builds data loaded successfully")
+                return data
+            else:
+                logger.warning(
+                    f"Failed to fetch game builds: HTTP {response.status_code}"
+                )
+                return {}
+        except Exception as e:
+            logger.error(f"Error loading game builds: {e}")
             return {}
 
     # Calculate total coffee cups since creation date
@@ -75,13 +111,94 @@ class StatisticsCommands(commands.Cog):
         except Exception as e:
             logger.error(f"Error formatting creation date: {e}")
             # Fallback
-            return (
-                creation_date_str.split(" ")[0]
-                + " "
-                + creation_date_str.split(" ")[1]
-                + " "
-                + creation_date_str.split(" ")[2]
-            )
+            parts = creation_date_str.split(" ")
+            if len(parts) >= 3:
+                return f"{parts[0]} {parts[1]} {parts[2]}"
+            return creation_date_str
+
+    # Format date string to Month Day, Year format
+    def format_date_nicely(self, date_str: str) -> str:
+        try:
+            # Try different date formats
+            formats_to_try = [
+                "%Y-%m-%d",
+                "%B %d, %Y",
+                "%Y.%m.%d %H:%M:%S",
+                "%Y-%m-%dT%H:%M:%S.%f",
+            ]
+
+            for fmt in formats_to_try:
+                try:
+                    date_obj = datetime.strptime(date_str, fmt)
+                    return date_obj.strftime("%B %d, %Y")
+                except ValueError:
+                    continue
+
+            # If no format works, try to extract the date part
+            if "T" in date_str:
+                date_part = date_str.split("T")[0]
+                try:
+                    date_obj = datetime.strptime(date_part, "%Y-%m-%d")
+                    return date_obj.strftime("%B %d, %Y")
+                except ValueError:
+                    pass
+
+            return date_str
+        except Exception as e:
+            logger.error(f"Error formatting date '{date_str}': {e}")
+            return date_str
+
+    # Get latest changelog entry
+    def get_latest_changelog_entry(self, changelog_data: dict) -> dict:
+        if not changelog_data or "updates" not in changelog_data:
+            return {}
+
+        updates = changelog_data.get("updates", [])
+        if not updates:
+            return {}
+
+        # Sort by date
+        sorted_updates = sorted(updates, key=lambda x: x.get("date", ""), reverse=True)
+        return sorted_updates[0] if sorted_updates else {}
+
+    # Get latest game build
+    def get_latest_game_build(self, game_builds_data: dict) -> dict:
+        if not game_builds_data or "builds" not in game_builds_data:
+            return {}
+
+        builds = game_builds_data.get("builds", {})
+        if not builds:
+            return {}
+
+        # There's only one game in the builds
+        game_name = list(builds.keys())[0]
+        game_builds = builds.get(game_name, {})
+
+        if not game_builds:
+            return {}
+
+        # Find the build with the latest build_date
+        latest_build_hash = None
+        latest_build_date = None
+
+        for build_hash, build_data in game_builds.items():
+            build_info = build_data.get("build_info", {})
+            build_date = build_info.get("build_date", "")
+
+            if build_date:
+                try:
+                    # Parse the build date
+                    build_date_obj = datetime.strptime(build_date, "%Y.%m.%d %H:%M:%S")
+                    if latest_build_date is None or build_date_obj > latest_build_date:
+                        latest_build_date = build_date_obj
+                        latest_build_hash = build_hash
+                except Exception:
+                    continue
+
+        if latest_build_hash:
+            return game_builds.get(latest_build_hash, {}).get("build_info", {})
+
+        return {}
 
     @app_commands.command(
         name="statistics",
@@ -95,7 +212,10 @@ class StatisticsCommands(commands.Cog):
             f"Statistics command invoked by {interaction.user} in guild {interaction.guild.name}"
         )
 
+        # Load all data sources
         stats_data = self.load_statistics()
+        changelog_data = self.load_changelog()
+        game_builds_data = self.load_game_builds()
 
         if not stats_data:
             embed.description = (
@@ -108,7 +228,7 @@ class StatisticsCommands(commands.Cog):
             return
 
         try:
-            # Get and format data
+            # Get and format main statistics data
             creation_date_raw = stats_data.get("creationDate", "Unknown")
             coffee_per_day = stats_data.get("coffeePerDay", 0)
 
@@ -126,7 +246,31 @@ class StatisticsCommands(commands.Cog):
                 total_coffee = 0
                 days_since_creation = 0
 
-            # Add creation date and coffee stats
+            # Get latest changelog entry
+            latest_update = self.get_latest_changelog_entry(changelog_data)
+            latest_version = latest_update.get("version", "Unknown")
+            latest_update_date = latest_update.get("date", "Unknown")
+
+            # Format the update date nicely
+            if latest_update_date != "Unknown":
+                formatted_update_date = self.format_date_nicely(latest_update_date)
+            else:
+                formatted_update_date = "Unknown"
+
+            # Get latest game build
+            latest_game_build = self.get_latest_game_build(game_builds_data)
+            game_version = latest_game_build.get("version_name", "Unknown")
+            game_build_date = latest_game_build.get("build_date", "Unknown")
+            compressed_size = latest_game_build.get("compressed_size", "Unknown")
+            uncompressed_size = latest_game_build.get("uncompressed_size", "Unknown")
+
+            # Format game build date nicely
+            if game_build_date != "Unknown":
+                formatted_game_build_date = self.format_date_nicely(game_build_date)
+            else:
+                formatted_game_build_date = "Unknown"
+
+            # Add Project Overview section
             coffee_field_value = f"**Creation Date:** {creation_date}\n**Days Since Creation:** {days_since_creation:,} days\n**Coffee Consumption:** {coffee_per_day} cups per day"
             if total_coffee > 0:
                 coffee_field_value += (
@@ -136,6 +280,23 @@ class StatisticsCommands(commands.Cog):
             embed.add_field(
                 name="📊 Project Overview", value=coffee_field_value, inline=False
             )
+
+            # Add Website Version section
+            website_info = f"**Website Version:** {latest_version}\n**Website Build:** {formatted_update_date}"
+            embed.add_field(
+                name="🌐 Website Information", value=website_info, inline=False
+            )
+
+            # Add Game Overview section
+            if game_version != "Unknown":
+                game_info = f"**Game Version:** {game_version}\n**Game Build:** {formatted_game_build_date}\n**Download Size:** {compressed_size}\n**Install Size:** {uncompressed_size}"
+                embed.add_field(name="🎮 Game Overview", value=game_info, inline=False)
+            else:
+                embed.add_field(
+                    name="🎮 Game Overview",
+                    value="*No game build data available*",
+                    inline=False,
+                )
 
             # Add statistics fields
             stats = stats_data.get("stats", {})
@@ -149,7 +310,7 @@ class StatisticsCommands(commands.Cog):
                         f"**Contributors:** {stats.get('contributors', 0)}\n"
                         f"**Lines of Code:** {stats.get('linesOfCode', 0):,}"
                     ),
-                    inline=True,
+                    inline=False,
                 )
 
                 # Project structure stats
@@ -160,7 +321,7 @@ class StatisticsCommands(commands.Cog):
                         f"**Folders:** {stats.get('foldersCount', 0):,}\n"
                         f"**Total Size:** {stats.get('totalSizeGB', 0)} GB"
                     ),
-                    inline=True,
+                    inline=False,
                 )
 
             # Add a fun fact or additional information
