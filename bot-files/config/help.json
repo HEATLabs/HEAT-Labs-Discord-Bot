@@ -1,0 +1,155 @@
+{
+  "commands": [
+    {
+      "name": "tank",
+      "description": "View detailed information about a specific tank.",
+      "usage": "/tank [tank_name]",
+      "category": "Game Info"
+    },
+    {
+      "name": "tanks",
+      "description": "List all tanks.",
+      "usage": "/tanks",
+      "category": "Game Info"
+    },
+    {
+      "name": "map",
+      "description": "View detailed information about a specific map.",
+      "usage": "/map [map_name]",
+      "category": "Game Info"
+    },
+    {
+      "name": "maps",
+      "description": "List all maps.",
+      "usage": "/maps",
+      "category": "Game Info"
+    },
+    {
+      "name": "agent",
+      "description": "View detailed information about a specific agent.",
+      "usage": "/agent [agent_name]",
+      "category": "Game Info"
+    },
+    {
+      "name": "agents",
+      "description": "List all agents.",
+      "usage": "/agents [agent_name]",
+      "category": "Game Info"
+    },
+    {
+      "name": "tournament",
+      "description": "View details of a specific tournament.",
+      "usage": "/tournament [tournament_name]",
+      "category": "Tournaments"
+    },
+    {
+      "name": "tournaments",
+      "description": "View all tournaments.",
+      "usage": "/tournaments",
+      "category": "Tournaments"
+    },
+    {
+      "name": "player",
+      "description": "Check stats of a specific player. [In Development]",
+      "usage": "/player [player_name]",
+      "category": "Players"
+    },
+    {
+      "name": "players",
+      "description": "List the top players. [In Development]",
+      "usage": "/players",
+      "category": "Players"
+    },
+    {
+      "name": "random",
+      "description": "Get a random tank, map, agent or page.",
+      "usage": "/random [type]",
+      "category": "Fun"
+    },
+    {
+      "name": "dice-roll",
+      "description": "Roll the dice and guess the number.",
+      "usage": "/dice-roll [guess]",
+      "category": "Fun"
+    },
+    {
+      "name": "dice-rank",
+      "description": "Check the dice rolling leaderboards.",
+      "usage": "/dice-rank",
+      "category": "Fun"
+    },
+    {
+      "name": "contact",
+      "description": "Send feedback or reports to the HEAT Labs team.",
+      "usage": "/contact",
+      "category": "Utility"
+    },
+    {
+      "name": "domains",
+      "description": "Show all active HEAT Labs domains.",
+      "usage": "/domains",
+      "category": "Utility"
+    },
+    {
+      "name": "socials",
+      "description": "Get links to official HEAT Labs platforms.",
+      "usage": "/socials",
+      "category": "Utility"
+    },
+    {
+      "name": "team",
+      "description": "View current HEAT Labs team members and roles.",
+      "usage": "/team",
+      "category": "Utility"
+    },
+    {
+      "name": "contributors",
+      "description": "Show all project contributors.",
+      "usage": "/contributors",
+      "category": "Utility"
+    },
+    {
+      "name": "playground",
+      "description": "List all experimental features.",
+      "usage": "/playground",
+      "category": "Utility"
+    },
+    {
+      "name": "debug",
+      "description": "Developer-only for internal testing.",
+      "usage": "/debug",
+      "category": "Developer"
+    },
+    {
+      "name": "status",
+      "description": "Check the status of our systems.",
+      "usage": "/status",
+      "category": "Utility"
+    },
+    {
+      "name": "facts",
+      "description": "Get a random fun fact.",
+      "usage": "/facts",
+      "category": "Fun"
+    },
+    {
+      "name": "ping",
+      "description": "Check bot latency.",
+      "usage": "/ping",
+      "category": "Utility"
+    }
+  ],
+  "categories": [
+    "Game Info",
+    "Tournaments",
+    "Players",
+    "Fun",
+    "Utility",
+    "Developer"
+  ],
+  "tips": [
+    "Use `/help [page]` to navigate between pages",
+    "Command names are case-insensitive",
+    "For more information, visit the bot's [documentation](https://bot.heatlabs.net)"
+  ]
+}
