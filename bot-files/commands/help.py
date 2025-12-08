@@ -56,7 +56,7 @@ class HelpCommands(commands.Cog):
                 value=(
                     "• Use `/help` anytime to see this menu again.\n"
                     "• Command names are case-insensitive.\n"
-                    "• For more information, visit the bot's [documentation](https://discord.heatlabs.net)."
+                    "• For more information, visit the bot's [documentation](https://bot.heatlabs.net)."
                 ),
                 inline=False,
             )
