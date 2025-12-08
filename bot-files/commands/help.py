@@ -43,6 +43,7 @@ class HelpCommands(commands.Cog):
                     "**`/status`** – Check the status of our systems.\n"
                     "**`/dice-roll {guess}`** – Roll the dice and guess the number.\n"
                     "**`/dice-rank`** – Check the dice rolling leaderboards.\n"
+                    "**`/random {type}`** – Get a random tank, map, agent or page.\n"
                     "**`/facts`** – Get a random fun fact.\n"
                     "**`/ping`** – Check bot latency."
                 ),
