@@ -29,6 +29,11 @@
       "socialName": "Discord",
       "socialDescription": "Official HEAT Labs Discord Server",
       "socialURL": "https://discord.com/invite/caEFCA9ScF"
+    },
+	{
+      "socialName": "Reddit",
+      "socialDescription": "Official HEAT Labs Subreddit",
+      "socialURL": "https://www.reddit.com/r/HEATLabs"
     }
   ]
 }
