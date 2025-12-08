@@ -41,7 +41,7 @@ class HelpCommands(commands.Cog):
                     "**`/playground`** – List all experimental features.\n"
                     "**`/debug`** – Developer-only for internal testing.\n"
                     "**`/status`** – Check the status of our systems.\n"
-                    "**`/dice-roll`** – Roll the dice and guess the number.\n"
+                    "**`/dice-roll {guess}`** – Roll the dice and guess the number.\n"
                     "**`/dice-rank`** – Check the dice rolling leaderboards.\n"
                     "**`/facts`** – Get a random fun fact.\n"
                     "**`/ping`** – Check bot latency."
