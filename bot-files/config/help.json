@@ -136,7 +136,7 @@
       "name": "ping",
       "description": "Check bot latency.",
       "usage": "/ping",
-      "category": "Utility"
+      "category": "Developer"
     }
   ],
   "categories": [
