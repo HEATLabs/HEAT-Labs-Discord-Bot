@@ -121,6 +121,12 @@
       "category": "Developer"
     },
     {
+      "name": "support",
+      "description": "Find out how to help sustain the project.",
+      "usage": "/support",
+      "category": "Developer"
+    },
+    {
       "name": "status",
       "description": "Check the status of our systems.",
       "usage": "/status",
