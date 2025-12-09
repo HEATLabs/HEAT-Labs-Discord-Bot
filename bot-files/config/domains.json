@@ -39,6 +39,11 @@
       "pageName": "HEAT Labs Mods",
       "pageDescription": "Official hub for browsing mods created by the HEAT Labs team and the community.",
       "pageURL": "https://mods.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Mobile App",
+      "pageDescription": "The official mobile companion app providing quick access to HEAT Labs tools on the go.",
+      "pageURL": "https://app.heatlabs.net"
     }
   ]
 }
