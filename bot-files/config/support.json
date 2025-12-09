@@ -1,0 +1,24 @@
+{
+  "support": [
+    {
+      "pageName": "Ko-Fi",
+      "pageDescription": "Coming Soon!",
+      "pageURL": "https://heatlabs.net"
+    },
+    {
+      "pageName": "GitHub",
+      "pageDescription": "Coming Soon!",
+      "pageURL": "https://heatlabs.net"
+    },
+    {
+      "pageName": "PayPal",
+      "pageDescription": "Coming Soon!",
+      "pageURL": "https://heatlabs.net"
+    },
+    {
+      "pageName": "Patreon",
+      "pageDescription": "Coming Soon!",
+      "pageURL": "https://heatlabs.net"
+    }
+  ]
+}
