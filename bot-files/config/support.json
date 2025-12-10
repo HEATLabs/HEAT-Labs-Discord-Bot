@@ -2,23 +2,18 @@
   "support": [
     {
       "pageName": "Ko-Fi",
-      "pageDescription": "Coming Soon!",
-      "pageURL": "https://heatlabs.net"
+      "pageDescription": "A simple way to support HEAT Labs with one-time or recurring contributions. Every donation helps keep our tools running and free for everyone.",
+      "pageURL": "https://ko-fi.com/heatlabs"
+    },
+    {
+      "pageName": "Buy Me a Coffee",
+      "pageDescription": "If you enjoy what we build, you can fuel our work with a quick tip or monthly support. It’s fast, friendly, and directly supports development.",
+      "pageURL": "https://buymeacoffee.com/heatlabs"
     },
     {
       "pageName": "GitHub",
-      "pageDescription": "Coming Soon!",
-      "pageURL": "https://heatlabs.net"
-    },
-    {
-      "pageName": "PayPal",
-      "pageDescription": "Coming Soon!",
-      "pageURL": "https://heatlabs.net"
-    },
-    {
-      "pageName": "Patreon",
-      "pageDescription": "Coming Soon!",
-      "pageURL": "https://heatlabs.net"
+      "pageDescription": "Support the project directly through GitHub Sponsors. Perfect for developers and contributors who want to help sustain the development of HEAT Labs.",
+      "pageURL": "https://github.com/sponsors/HEATLabs"
     }
   ]
 }
