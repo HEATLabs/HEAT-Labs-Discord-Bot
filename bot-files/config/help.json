@@ -79,6 +79,12 @@
       "category": "Fun"
     },
     {
+      "name": "memes",
+      "description": "Get a random HEAT Labs meme from our collection.",
+      "usage": "/memes",
+      "category": "Fun"
+    },
+    {
       "name": "contact",
       "description": "Send feedback or reports to the HEAT Labs team.",
       "usage": "/contact",
