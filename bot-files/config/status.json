@@ -7,6 +7,11 @@
       "message": "Playing with fire"
     },
     {
+      "type": "listening",
+      "name": "Listening to CQ CQ CQ",
+      "message": "Listening carefully"
+    },
+    {
       "type": "watching",
       "name": "Browsing HEAT Labs",
       "message": "Watching HEAT Labs"
@@ -19,7 +24,7 @@
     {
       "type": "listening",
       "name": "Listening to {user_count} bug reports",
-      "message": "Listening carefully"
+      "message": "I can hear them scream"
     },
     {
       "type": "listening",
@@ -62,14 +67,24 @@
       "message": "Listening to HEAT Labs"
     },
     {
+      "type": "watching",
+      "name": "Watching SINEWAVE chug his coffee",
+      "message": "Caffeinated mode"
+    },
+    {
       "type": "listening",
       "name": "Listening to Remmy whispering",
-      "message": "Caffeinated mode"
+      "message": "Careless whispers"
     },
     {
       "type": "playing",
       "name": "Playing World of Tanks: HEAT",
       "message": "Playing World of Tanks: HEAT"
+    },
+    {
+      "type": "watching",
+      "name": "Watching VEN0M pretend a bug is a feature",
+      "message": "Working as intended"
     },
     {
       "type": "playing",
