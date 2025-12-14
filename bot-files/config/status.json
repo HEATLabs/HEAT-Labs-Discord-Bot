@@ -12,9 +12,19 @@
       "message": "Listening carefully"
     },
     {
+      "type": "playing",
+      "name": "Running single thread right now",
+      "message": "Pentium 4"
+    },
+    {
       "type": "watching",
       "name": "Browsing HEAT Labs",
       "message": "Watching HEAT Labs"
+    },
+    {
+      "type": "listening",
+      "name": "Searching for memes",
+      "message": "There are memes hidden somewhere"
     },
     {
       "type": "watching",
@@ -22,14 +32,29 @@
       "message": "Watching chaos unfold"
     },
     {
+      "type": "playing",
+      "name": "Searching for Maxwell",
+      "message": "Maxwell is here"
+    },
+    {
       "type": "listening",
       "name": "Listening to {user_count} bug reports",
       "message": "I can hear them scream"
     },
     {
+      "type": "watching",
+      "name": "Watching Rickles say 'I didn't work on that one'",
+      "message": "Negative feedback received"
+    },
+    {
       "type": "listening",
       "name": "Looking at {user_count} users",
       "message": "listening to users"
+    },
+    {
+      "type": "playing",
+      "name": "",
+      "message": ""
     },
     {
       "type": "watching",
@@ -80,6 +105,11 @@
       "type": "playing",
       "name": "Playing World of Tanks: HEAT",
       "message": "Playing World of Tanks: HEAT"
+    },
+    {
+      "type": "listening",
+      "name": "Listening to someone say ‘it was working earlier’",
+      "message": "I swear, it was working!"
     },
     {
       "type": "watching",
