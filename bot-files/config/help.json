@@ -103,6 +103,12 @@
       "category": "Utility"
     },
     {
+      "name": "partners",
+      "description": "Exclusive offers from HEAT Labs partners.",
+      "usage": "/partners",
+      "category": "Utility"
+    },
+    {
       "name": "team",
       "description": "View current HEAT Labs team members and roles.",
       "usage": "/team",
