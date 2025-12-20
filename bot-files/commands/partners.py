@@ -71,6 +71,13 @@ class PartnersCommands(commands.Cog):
                     inline=False,
                 )
 
+            # Add disclaimer
+            embed.add_field(
+                name="Disclaimer",
+                value="HEAT Labs is not sponsored by or endorsed by any of the services listed here. The links and offers shown in this section are referral or affiliate links. We include these platforms because we actively use them ourselves and genuinely find them useful for projects like HEAT Labs. If you choose to use an offer through one of these links, it may help support HEAT Labs at no extra cost to you. All recommendations are made independently, without paid sponsorships, special treatment, or editorial influence from the listed services.",
+                inline=False,
+            )
+
             await interaction.followup.send(embed=embed)
             logger.info(
                 f"Partners command completed successfully for {interaction.user}"
