@@ -121,6 +121,12 @@
       "category": "Utility"
     },
     {
+      "name": "testers",
+      "description": "Show all project testers.",
+      "usage": "/testers",
+      "category": "Utility"
+    },
+    {
       "name": "playground",
       "description": "List all experimental features.",
       "usage": "/playground",
