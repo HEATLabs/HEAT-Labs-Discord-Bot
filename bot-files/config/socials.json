@@ -26,6 +26,11 @@
       "socialURL": "https://www.twitch.tv/HEATLabs"
     },
 	{
+      "socialName": "Steam",
+      "socialDescription": "Official HEAT Labs Steam Group",
+      "socialURL": "https://steamcommunity.com/groups/heatlabs"
+    },
+	{
       "socialName": "Discord",
       "socialDescription": "Official HEAT Labs Discord Server",
       "socialURL": "https://discord.com/invite/caEFCA9ScF"
