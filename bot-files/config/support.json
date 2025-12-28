@@ -14,6 +14,11 @@
       "pageName": "GitHub",
       "pageDescription": "Support the project directly through GitHub Sponsors. Perfect for developers and contributors who want to help sustain the development of HEAT Labs.",
       "pageURL": "https://github.com/sponsors/HEATLabs"
+    },
+    {
+      "pageName": "Merch Store",
+      "pageDescription": "Official HEAT Labs merchandise where every purchase helps fund our infrastructure and development. Support the project and get something back in return.",
+      "pageURL": ""
     }
   ]
 }
