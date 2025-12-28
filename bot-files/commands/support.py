@@ -76,12 +76,15 @@ class SupportCommands(commands.Cog):
                 page_description = method.get(
                     "pageDescription", "No description available"
                 )
-                page_url = method.get("pageURL", "https://heatlabs.net")
+                page_url = method.get("pageURL", "")
 
-                # Create clickable field value with the URL
-                field_value = (
-                    f"{page_description}\n[Support via {page_name} →]({page_url})\n\n"
-                )
+                # Check if page_url is empty or contains only whitespace
+                if not page_url or page_url.strip() == "":
+                    # Create field without clickable link
+                    field_value = f"{page_description}\n**Coming Soon**\n\n"
+                else:
+                    # Create clickable field value with the URL
+                    field_value = f"{page_description}\n[Support via {page_name} →]({page_url})\n\n"
 
                 embed.add_field(
                     name=f"💖 {page_name}",
