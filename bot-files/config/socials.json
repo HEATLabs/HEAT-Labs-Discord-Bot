@@ -21,6 +21,11 @@
       "socialURL": "https://www.tiktok.com/@heatlabs_official"
     },
 	{
+      "socialName": "Instagram",
+      "socialDescription": "Official HEAT Labs Instagram Account",
+      "socialURL": "https://www.instagram.com/heatlabs_official"
+    },
+	{
       "socialName": "Twitch",
       "socialDescription": "Official HEAT Labs Twitch Account",
       "socialURL": "https://www.twitch.tv/HEATLabs"
