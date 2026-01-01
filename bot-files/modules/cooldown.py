@@ -41,7 +41,7 @@ class GlobalCooldown:
                     color=0xFF8300,
                 )
                 embed.set_footer(
-                    text="© 2026 HEAT Labs | Official Discord App",
+                    text="© 2025 - 2026 HEAT Labs | Official Discord App",
                     icon_url="https://raw.githubusercontent.com/HEATlabs/HEAT-Labs-Discord-Bot/main/assets/public-assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
                 )
 
