@@ -9,6 +9,11 @@
       "pageName": "UptimeRobot",
       "pageDescription": "Get 50 monitors for free with real-time alerts. Public status pages, 20+ integrations, web & mobile access and quick setup.",
       "pageURL": "https://uptimerobot.com/?red=heatlabs"
+    },
+    {
+      "pageName": "Printful",
+      "pageDescription": "High-quality on-demand printing with no minimums. Global fulfillment, automated order handling, and custom branding options.",
+      "pageURL": "https://www.printful.com/printing-services/a/HEATLabs"
     }
   ]
 }
