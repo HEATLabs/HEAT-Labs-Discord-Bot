@@ -35,6 +35,7 @@ class PlaygroundCommands(commands.Cog):
                     "⚙️ [**Game Configurator**](https://heatlabs.net/playground/configurator) - Customize your World of Tanks: HEAT experience\n"
                     "🎲 [**Tank Roulette**](https://heatlabs.net/playground/roulette) - Spin the roulette to get a random tank to play\n"
                     "🖥️ [**Game Servers**](https://heatlabs.net/playground/game-servers) - Live tracking for all World of Tanks: HEAT game servers\n"
+                    "📊 [**Game Data**](https://heatlabs.net/playground/game-data) - Statistics, achievements, and detailed gameplay insights\n"
                     "📱 [**HEAT Labs Application**](https://heatlabs.net/playground/heat-labs-app) - Download our app on your Phone or Desktop\n"
                     "📝 [**Wordle Game**](https://heatlabs.net/playground/wordle) - World of Tanks: HEAT inspired Wordle game\n"
                     "🔊 [**Soundboard**](https://heatlabs.net/playground/soundboard) - Listen to all sounds from World of Tanks: HEAT\n"
