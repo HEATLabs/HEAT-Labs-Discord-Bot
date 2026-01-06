@@ -172,8 +172,6 @@ class HEATLabsBot(commands.AutoShardedBot):
 
     # Task to update member counts every hour
     async def hourly_member_count_update(self):
-        await asyncio.sleep(3600)
-
         while True:
             try:
                 logger.info("Starting hourly member count update...")
