@@ -128,12 +128,18 @@ class HEATLabsBot(commands.AutoShardedBot):
         # Initialize shard monitor
         self.shard_monitor = ShardMonitor()
 
+        # Hourly update task
+        self.hourly_update_task = None
+
         logger.info("HEAT Labs Bot initialized with automatic sharding")
 
     # Load all command modules
     async def setup_hook(self):
         # Initialize shard monitor session
         await self.shard_monitor.initialize()
+
+        # Start hourly update task
+        self.hourly_update_task = asyncio.create_task(self.hourly_member_count_update())
 
         loaded = []
         failed = []
@@ -163,6 +169,44 @@ class HEATLabsBot(commands.AutoShardedBot):
         logger.info(
             f"Commands synced with Discord ({len(loaded)} loaded, {len(failed)} failed)"
         )
+
+    # Task to update member counts every hour
+    async def hourly_member_count_update(self):
+        await asyncio.sleep(3600)
+
+        while True:
+            try:
+                logger.info("Starting hourly member count update...")
+
+                from modules.servers import ServerTracker
+
+                tracker = ServerTracker()
+
+                # Update all member counts
+                updated_count = tracker.update_all_member_counts(self.guilds)
+
+                logger.info(
+                    f"Hourly member count update complete: {updated_count} servers updated"
+                )
+
+                # Log total members
+                total_members = tracker.get_total_members()
+                logger.info(
+                    f"Total tracked members across all servers: {total_members}"
+                )
+
+                # Send periodic statistics through monitor if available
+                if hasattr(self, "monitor"):
+                    await self.monitor.send_periodic_stats()
+
+            except Exception as e:
+                logger.error(f"Error during hourly member count update: {e}")
+                # Send error to monitor if available
+                if hasattr(self, "monitor"):
+                    await self.monitor.on_server_tracker_error(e)
+
+            # Wait for 1 hour before next update
+            await asyncio.sleep(3600)
 
     async def on_ready(self):
         logger.info(f"{self.user} has connected to Discord!")
@@ -218,6 +262,11 @@ class HEATLabsBot(commands.AutoShardedBot):
             tracker = ServerTracker()
             tracker.sync_servers(self.guilds)
             logger.info("Server sync completed successfully")
+
+            # Log total members from tracker
+            total_members = tracker.get_total_members()
+            logger.info(f"Total tracked members across all servers: {total_members}")
+
         except Exception as e:
             logger.error(f"Error during server sync: {e}")
             # Send to monitor if available
@@ -449,6 +498,24 @@ class HEATLabsBot(commands.AutoShardedBot):
         except Exception as e:
             logger.error(f"Error removing guild from tracker: {e}")
 
+    # Clean up resources when bot shuts down
+    async def close(self):
+        logger.info("Shutting down bot...")
+
+        # Cancel hourly update task
+        if self.hourly_update_task:
+            self.hourly_update_task.cancel()
+            try:
+                await self.hourly_update_task
+            except asyncio.CancelledError:
+                logger.info("Hourly update task cancelled")
+
+        # Close shard monitor session
+        await self.shard_monitor.close()
+
+        # Call parent close method
+        await super().close()
+
 
 async def main():
     bot = HEATLabsBot()
@@ -484,7 +551,7 @@ async def main():
                 pass
     finally:
         # Clean up resources
-        await bot.shard_monitor.close()
+        await bot.close()
 
 
 if __name__ == "__main__":

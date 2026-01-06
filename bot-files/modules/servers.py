@@ -52,6 +52,9 @@ class ServerTracker:
                 self._add_server_internal(guild, current_servers)
                 added_count += 1
                 logger.info(f"Added to server list: {guild.name} (ID: {guild.id})")
+            else:
+                # Update existing server's member count
+                self._update_server_member_count(guild, current_servers)
 
         # Remove servers that the bot is no longer in
         removed_count = 0
@@ -78,16 +81,35 @@ class ServerTracker:
             "name": guild.name,
             "id": guild.id,
             "date_added": datetime.now().isoformat(),
+            "member_count": guild.member_count,
+            "last_updated": datetime.now().isoformat(),
         }
         servers_list.append(server_entry)
+
+    def _update_server_member_count(self, guild: discord.Guild, servers_list: list):
+        for server in servers_list:
+            if server["id"] == guild.id:
+                server["member_count"] = guild.member_count
+                server["last_updated"] = datetime.now().isoformat()
+                logger.debug(
+                    f"Updated member count for {guild.name}: {guild.member_count}"
+                )
+                break
 
     def add_server(self, guild: discord.Guild):
         servers = self._read_servers()
 
         # Check if server already exists
-        if any(server["id"] == guild.id for server in servers):
-            logger.warning(f"Server already in list: {guild.name} (ID: {guild.id})")
-            return False
+        existing_server = next((s for s in servers if s["id"] == guild.id), None)
+        if existing_server:
+            # Update member count for existing server
+            existing_server["member_count"] = guild.member_count
+            existing_server["last_updated"] = datetime.now().isoformat()
+            self._write_servers(servers)
+            logger.info(
+                f"Updated member count for existing server: {guild.name} (ID: {guild.id})"
+            )
+            return True
 
         self._add_server_internal(guild, servers)
         self._write_servers(servers)
@@ -105,9 +127,32 @@ class ServerTracker:
             return True
         return False
 
+    def update_all_member_counts(self, guilds: list):
+        servers = self._read_servers()
+        updated_count = 0
+
+        for server in servers:
+            # Find matching guild
+            matching_guild = next((g for g in guilds if g.id == server["id"]), None)
+            if matching_guild:
+                server["member_count"] = matching_guild.member_count
+                server["last_updated"] = datetime.now().isoformat()
+                updated_count += 1
+
+        if updated_count > 0:
+            self._write_servers(servers)
+            logger.info(f"Updated member counts for {updated_count} servers")
+            return updated_count
+        return 0
+
     def get_servers(self) -> list:
         return self._read_servers()
 
     def get_server(self, guild_id: int) -> dict:
         servers = self._read_servers()
         return next((s for s in servers if s["id"] == guild_id), None)
+
+    # Calculate total members across all tracked servers
+    def get_total_members(self) -> int:
+        servers = self._read_servers()
+        return sum(server.get("member_count", 0) for server in servers)
