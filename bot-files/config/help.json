@@ -145,6 +145,12 @@
       "category": "Developer"
     },
     {
+      "name": "supporters",
+      "description": "View all HEAT Labs supporters.",
+      "usage": "/supporters",
+      "category": "Developer"
+    },
+    {
       "name": "status",
       "description": "Check the status of our systems.",
       "usage": "/status",
