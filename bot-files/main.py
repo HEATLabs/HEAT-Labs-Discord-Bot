@@ -193,10 +193,6 @@ class HEATLabsBot(commands.AutoShardedBot):
                     f"Total tracked members across all servers: {total_members}"
                 )
 
-                # Send periodic statistics through monitor if available
-                if hasattr(self, "monitor"):
-                    await self.monitor.send_periodic_stats()
-
             except Exception as e:
                 logger.error(f"Error during hourly member count update: {e}")
                 # Send error to monitor if available
