@@ -38,6 +38,7 @@ class PlaygroundCommands(commands.Cog):
                     "📊 [**Game Data**](https://heatlabs.net/playground/game-data) - Statistics, achievements, and detailed gameplay insights\n"
                     "📱 [**HEAT Labs Application**](https://heatlabs.net/playground/heat-labs-app) - Download our app on your Phone or Desktop\n"
                     "📝 [**Wordle Game**](https://heatlabs.net/playground/wordle) - World of Tanks: HEAT inspired Wordle game\n"
+                    "🏰 [**Tank Defense Game**](https://heatlabs.net/playground/tank-defense) - Survive waves of enemy tanks as long as possible\n"
                     "🔊 [**Soundboard**](https://heatlabs.net/playground/soundboard) - Listen to all sounds from World of Tanks: HEAT\n"
                     "⏰ [**Alpha 3 Countdown**](https://heatlabs.net/playground/alpha-3-playtest) - Countdown for the launch of Alpha 3 playtest\n"
                 ),
