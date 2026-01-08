@@ -324,6 +324,18 @@ class StatisticsCommands(commands.Cog):
                     inline=False,
                 )
 
+                # Website analytics stats
+                embed.add_field(
+                    name="📈 Website Analytics",
+                    value=(
+                        f"**Data Served:** {stats.get('dataServed', 0)} GB\n"
+                        f"**Data Cached:** {stats.get('dataCached', 0)} GB\n"
+                        f"**Total Requests:** {stats.get('totalRequests', 0):,}\n"
+                        f"**Total Visitors:** {stats.get('totalVisitors', 0):,}"
+                    ),
+                    inline=False,
+                )
+
             # Add a fun fact or additional information
             total_files_folders = stats.get("filesCount", 0) + stats.get(
                 "foldersCount", 0
