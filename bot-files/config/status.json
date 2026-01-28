@@ -2,11 +2,6 @@
   "rotation_interval": 20,
   "statuses": [
     {
-      "type": "playing",
-      "name": "Playing with fire",
-      "message": "Playing with fire"
-    },
-    {
       "type": "listening",
       "name": "Listening to CQ CQ CQ",
       "message": "Listening carefully"
@@ -27,11 +22,6 @@
       "message": "There are memes hidden somewhere"
     },
     {
-      "type": "watching",
-      "name": "Watching the servers melt",
-      "message": "Watching chaos unfold"
-    },
-    {
       "type": "playing",
       "name": "Searching for Maxwell",
       "message": "Maxwell is here"
@@ -43,7 +33,7 @@
     },
     {
       "type": "watching",
-      "name": "Watching Rickles say 'I didn't work on that one'",
+      "name": "Rickles says 'I didn't work on that one'",
       "message": "Negative feedback received"
     },
     {
@@ -73,7 +63,7 @@
     },
     {
       "type": "watching",
-      "name": "Watching {server_count} servers argue over updates",
+      "name": "{server_count} servers argue over updates",
       "message": "Watching drama"
     },
     {
@@ -88,8 +78,8 @@
     },
     {
       "type": "listening",
-      "name": "Loading to HEAT Labs",
-      "message": "Listening to HEAT Labs"
+      "name": "Loading HEAT Labs",
+      "message": "Loading HEAT Labs"
     },
     {
       "type": "watching",
@@ -108,23 +98,13 @@
     },
     {
       "type": "listening",
-      "name": "Listening to someone say ‘it was working earlier’",
-      "message": "I swear, it was working!"
+      "name": "This was working earlier",
+      "message": "I swear it was working!"
     },
     {
       "type": "watching",
       "name": "Watching VEN0M pretend a bug is a feature",
       "message": "Working as intended"
-    },
-    {
-      "type": "playing",
-      "name": "Playing hide and seek with syntax errors",
-      "message": "Lost in the code again"
-    },
-    {
-      "type": "watching",
-      "name": "Watching HEAT Labs, through binoculars",
-      "message": "Observing suspicious activity"
     },
     {
       "type": "listening",
@@ -143,28 +123,18 @@
     },
     {
       "type": "listening",
-      "name": "Listening to {user_count} users in voice chat",
+      "name": "{user_count} users in voice chat",
       "message": "My ears hurt"
     },
     {
       "type": "watching",
-      "name": "Watching AI learn sarcasm",
-      "message": "This won’t end well"
+      "name": "I think this is broken",
+      "message": "Maybe it actually is"
     },
     {
       "type": "playing",
       "name": "Playing with unstable prototypes",
       "message": "Handle with caution"
-    },
-    {
-      "type": "watching",
-      "name": "Watching the devs push directly to main",
-      "message": "Holding my breath"
-    },
-    {
-      "type": "listening",
-      "name": "Listening for the sound of success (still waiting)",
-      "message": "Hope.exe not found"
     }
   ]
 }
