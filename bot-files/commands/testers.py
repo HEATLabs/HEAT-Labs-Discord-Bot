@@ -45,7 +45,9 @@ class TesterCommands(commands.Cog):
         members = self.load_tester()
 
         if not members:
-            embed.description = "⚠️ Failed to load testers data. Please try again later."
+            embed.description = (
+                "⚠️ Failed to load testers data. Please try again later."
+            )
             await interaction.followup.send(embed=embed)
             logger.warning(
                 f"Testers command failed: No members loaded for {interaction.user}"
@@ -63,11 +65,15 @@ class TesterCommands(commands.Cog):
 
             embed.description = "\n".join(tester_text)
             await interaction.followup.send(embed=embed)
-            logger.info(f"Testers command completed successfully for {interaction.user}")
+            logger.info(
+                f"Testers command completed successfully for {interaction.user}"
+            )
 
         except Exception as e:
             logger.error(f"Error processing testers data for {interaction.user}: {e}")
-            embed.description = "⚠️ Error processing testers data. Please try again later."
+            embed.description = (
+                "⚠️ Error processing testers data. Please try again later."
+            )
             await interaction.followup.send(embed=embed)
 
 

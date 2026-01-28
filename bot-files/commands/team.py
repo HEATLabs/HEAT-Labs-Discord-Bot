@@ -24,7 +24,9 @@ class TeamCommands(commands.Cog):
                 logger.info("Team data loaded successfully")
                 return data.get("members", [])
             else:
-                logger.warning(f"Failed to fetch team members: HTTP {response.status_code}")
+                logger.warning(
+                    f"Failed to fetch team members: HTTP {response.status_code}"
+                )
                 return []
         except Exception as e:
             logger.error(f"Error loading team: {e}")

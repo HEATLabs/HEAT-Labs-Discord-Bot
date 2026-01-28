@@ -24,7 +24,9 @@ class ContributorCommands(commands.Cog):
                 logger.info("Contributor data loaded successfully")
                 return data.get("contributors", [])
             else:
-                logger.warning(f"Failed to fetch contributors: HTTP {response.status_code}")
+                logger.warning(
+                    f"Failed to fetch contributors: HTTP {response.status_code}"
+                )
                 return []
         except Exception as e:
             logger.error(f"Error loading contributors: {e}")
@@ -45,7 +47,9 @@ class ContributorCommands(commands.Cog):
         members = self.load_contributor()
 
         if not members:
-            embed.description = "⚠️ Failed to load contributors data. Please try again later."
+            embed.description = (
+                "⚠️ Failed to load contributors data. Please try again later."
+            )
             await interaction.followup.send(embed=embed)
             logger.warning(
                 f"Contributors command failed: No members loaded for {interaction.user}"
@@ -63,11 +67,17 @@ class ContributorCommands(commands.Cog):
 
             embed.description = "\n".join(contributor_text)
             await interaction.followup.send(embed=embed)
-            logger.info(f"Contributors command completed successfully for {interaction.user}")
+            logger.info(
+                f"Contributors command completed successfully for {interaction.user}"
+            )
 
         except Exception as e:
-            logger.error(f"Error processing contributors data for {interaction.user}: {e}")
-            embed.description = "⚠️ Error processing contributors data. Please try again later."
+            logger.error(
+                f"Error processing contributors data for {interaction.user}: {e}"
+            )
+            embed.description = (
+                "⚠️ Error processing contributors data. Please try again later."
+            )
             await interaction.followup.send(embed=embed)
 
 

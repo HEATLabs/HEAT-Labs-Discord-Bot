@@ -24,7 +24,9 @@ class SupporterCommands(commands.Cog):
                 logger.info("Supporter data loaded successfully")
                 return data.get("supporters", [])
             else:
-                logger.warning(f"Failed to fetch supporters: HTTP {response.status_code}")
+                logger.warning(
+                    f"Failed to fetch supporters: HTTP {response.status_code}"
+                )
                 return []
         except Exception as e:
             logger.error(f"Error loading supporters: {e}")
@@ -45,7 +47,9 @@ class SupporterCommands(commands.Cog):
         members = self.load_supporter()
 
         if not members:
-            embed.description = "⚠️ Failed to load supporters data. Please try again later."
+            embed.description = (
+                "⚠️ Failed to load supporters data. Please try again later."
+            )
             await interaction.followup.send(embed=embed)
             logger.warning(
                 f"Supporters command failed: No members loaded for {interaction.user}"
@@ -63,11 +67,17 @@ class SupporterCommands(commands.Cog):
 
             embed.description = "\n".join(supporter_text)
             await interaction.followup.send(embed=embed)
-            logger.info(f"Supporters command completed successfully for {interaction.user}")
+            logger.info(
+                f"Supporters command completed successfully for {interaction.user}"
+            )
 
         except Exception as e:
-            logger.error(f"Error processing supporters data for {interaction.user}: {e}")
-            embed.description = "⚠️ Error processing supporters data. Please try again later."
+            logger.error(
+                f"Error processing supporters data for {interaction.user}: {e}"
+            )
+            embed.description = (
+                "⚠️ Error processing supporters data. Please try again later."
+            )
             await interaction.followup.send(embed=embed)
 
 
