@@ -49,6 +49,11 @@
       "pageName": "HEAT Labs Games",
       "pageDescription": "Interactive mini-games, tools and other community-driven experiences for World of Tanks: HEAT.",
       "pageURL": "https://games.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Tank Defense",
+      "pageDescription": "A top-down, wave-based survival tank defense game where you fight escalating enemy waves.",
+      "pageURL": "https://tank.heatlabs.net"
     }
   ]
 }
