@@ -54,6 +54,11 @@
       "pageName": "HEAT Labs Tank Defense",
       "pageDescription": "A top-down, wave-based survival tank defense game where you fight escalating enemy waves.",
       "pageURL": "https://tank.heatlabs.net"
+    },
+    {
+      "pageName": "HEAT Labs Search",
+      "pageDescription": "The official HEAT Labs new-tab experience built for fast access to tools, stats, and resources.",
+      "pageURL": "https://search.heatlabs.net"
     }
   ]
 }
