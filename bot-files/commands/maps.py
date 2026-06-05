@@ -54,24 +54,27 @@ class MapsListCommands(commands.Cog):
         try:
             maps = maps_data.get("maps", [])
 
-            if not maps:
-                embed.description = "No maps available."
+            # Filter to only maps with "Available Now" status
+            available_maps = [m for m in maps if m.get("status") == "Available Now"]
+
+            if not available_maps:
+                embed.description = "No available maps found."
                 await interaction.followup.send(embed=embed)
                 return
 
             # Create map list
-            map_names = sorted([m.get("name", "Unknown") for m in maps])
+            map_names = sorted([m.get("name", "Unknown") for m in available_maps])
 
             # Add all maps in one column
             embed.add_field(
-                name="🗺️ Maps",
+                name="🗺️ Available Maps",
                 value="\n".join(f"• {name}" for name in map_names),
                 inline=False,
             )
 
             embed.add_field(
                 name="📊 Total",
-                value=f"{len(maps)} Map{'s' if len(maps) != 1 else ''}",
+                value=f"{len(available_maps)} Map{'s' if len(available_maps) != 1 else ''}",
                 inline=True,
             )
 

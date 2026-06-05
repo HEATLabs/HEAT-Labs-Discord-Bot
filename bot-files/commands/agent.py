@@ -29,16 +29,6 @@ class AgentCommands(commands.Cog):
             logger.error(f"Error fetching agents data: {e}")
             return None
 
-    # Generate autocomplete choices for agent names
-    def get_agent_choices(self, agents_data):
-        if not agents_data:
-            return []
-        agents = agents_data.get("agents", [])
-        return [
-            app_commands.Choice(name=agent["name"], value=agent["name"])
-            for agent in agents
-        ]
-
     # Autocomplete callback for agent names
     async def agent_autocomplete(self, interaction: discord.Interaction, current: str):
         agents_data = await self.fetch_agents()
@@ -46,11 +36,15 @@ class AgentCommands(commands.Cog):
             return []
 
         agents = agents_data.get("agents", [])
-        choices = [agent["name"] for agent in agents]
+        # Filter to only agents with "Available Now" status
+        available_agents = [agent for agent in agents if agent.get("status") == "Available Now"]
+        choices = [agent["name"] for agent in available_agents]
         return [
             app_commands.Choice(name=choice, value=choice)
             for choice in choices
             if current.lower() in choice.lower()
+        ][
+            :25
         ]
 
     @app_commands.command(
@@ -82,14 +76,14 @@ class AgentCommands(commands.Cog):
         try:
             agents = agents_data.get("agents", [])
 
-            # Find the agent by name (case-insensitive)
-            agent = next((a for a in agents if a["name"].lower() == name.lower()), None)
+            # Find the agent by name
+            agent = next((a for a in agents if a["name"].lower() == name.lower() and a.get("status") == "Available Now"), None)
 
             if not agent:
                 embed = create_embed(command_name="Agent", color="#ff8300")
-                embed.description = f"❌ Agent '{name}' not found. Please check the spelling and try again."
+                embed.description = f"❌ Agent '{name}' not found or not yet available. Please check the spelling and try again."
                 await interaction.followup.send(embed=embed)
-                logger.warning(f"Agent '{name}' not found for {interaction.user}")
+                logger.warning(f"Agent '{name}' not found or not available for {interaction.user}")
                 return
 
             # Create the main embed

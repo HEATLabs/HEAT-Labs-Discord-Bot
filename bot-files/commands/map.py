@@ -36,7 +36,9 @@ class MapCommands(commands.Cog):
             return []
 
         maps = maps_data.get("maps", [])
-        choices = [m["name"] for m in maps]
+        # Filter to only maps with "Available Now" status
+        available_maps = [m for m in maps if m.get("status") == "Available Now"]
+        choices = [m["name"] for m in available_maps]
         return [
             app_commands.Choice(name=choice, value=choice)
             for choice in choices
@@ -74,14 +76,14 @@ class MapCommands(commands.Cog):
 
             # Find the map by name (case-insensitive)
             map_data = next(
-                (m for m in maps if m["name"].lower() == name.lower()), None
+                (m for m in maps if m["name"].lower() == name.lower() and m.get("status") == "Available Now"), None
             )
 
             if not map_data:
                 embed = create_embed(command_name="Map", color="#ff8300")
-                embed.description = f"❌ Map '{name}' not found. Please check the spelling and try again."
+                embed.description = f"❌ Map '{name}' not found or not yet available. Please check the spelling and try again."
                 await interaction.followup.send(embed=embed)
-                logger.warning(f"Map '{name}' not found for {interaction.user}")
+                logger.warning(f"Map '{name}' not found or not available for {interaction.user}")
                 return
 
             # Create the main embed
@@ -96,6 +98,10 @@ class MapCommands(commands.Cog):
             # Add description
             description = map_data.get("description", "No description available.")
             embed.add_field(name="📝 Description", value=description, inline=False)
+
+            # Add status
+            status = map_data.get("status", "Unknown")
+            embed.add_field(name="📌 Status", value=status, inline=True)
 
             await interaction.followup.send(embed=embed)
             logger.info(

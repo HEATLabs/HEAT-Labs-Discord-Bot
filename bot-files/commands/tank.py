@@ -40,7 +40,9 @@ class TankCommands(commands.Cog):
         tanks = (
             tanks_data if isinstance(tanks_data, list) else tanks_data.get("tanks", [])
         )
-        choices = [tank["name"] for tank in tanks]
+        # Filter to only tanks with "Available Now" class
+        available_tanks = [tank for tank in tanks if tank.get("class") == "Available Now"]
+        choices = [tank["name"] for tank in available_tanks]
         return [
             app_commands.Choice(name=choice, value=choice)
             for choice in choices
@@ -82,13 +84,13 @@ class TankCommands(commands.Cog):
             )
 
             # Find the tank by name (case-insensitive)
-            tank = next((t for t in tanks if t["name"].lower() == name.lower()), None)
+            tank = next((t for t in tanks if t["name"].lower() == name.lower() and t.get("class") == "Available Now"), None)
 
             if not tank:
                 embed = create_embed(command_name="Tank", color="#ff8300")
-                embed.description = f"❌ Tank '{name}' not found. Please check the spelling and try again."
+                embed.description = f"❌ Tank '{name}' not found or not yet available. Please check the spelling and try again."
                 await interaction.followup.send(embed=embed)
-                logger.warning(f"Tank '{name}' not found for {interaction.user}")
+                logger.warning(f"Tank '{name}' not found or not available for {interaction.user}")
                 return
 
             # Fetch tank-specific abilities and agents

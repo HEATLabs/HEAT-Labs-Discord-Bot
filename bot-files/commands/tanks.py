@@ -68,14 +68,17 @@ class TanksListCommands(commands.Cog):
                 else tanks_data.get("tanks", [])
             )
 
-            if not tanks:
-                embed.description = "No tanks available."
+            # Filter to only tanks with "Available Now" class
+            available_tanks = [tank for tank in tanks if tank.get("class") == "Available Now"]
+
+            if not available_tanks:
+                embed.description = "No available tanks found."
                 await interaction.followup.send(embed=embed)
                 return
 
             # Group tanks by nation
             tanks_by_nation = {}
-            for tank in tanks:
+            for tank in available_tanks:
                 nation_name = tank.get("nation", "Unknown")
                 if nation_name not in tanks_by_nation:
                     tanks_by_nation[nation_name] = []
@@ -91,11 +94,11 @@ class TanksListCommands(commands.Cog):
                         value="\n".join(f"• {name}" for name in tank_names),
                         inline=False,
                     )
-                total_tanks = len(tanks)
+                total_tanks = len(available_tanks)
             else:
                 # Show only selected nation
                 if selected_nation not in tanks_by_nation:
-                    embed.description = f"No tanks found for {selected_nation}."
+                    embed.description = f"No available tanks found for {selected_nation}."
                     await interaction.followup.send(embed=embed)
                     return
 
