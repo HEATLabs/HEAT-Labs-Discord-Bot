@@ -90,7 +90,7 @@ class ShardMonitor:
             data = {
                 "embeds": [embed.to_dict()],
                 "username": "HEAT Labs Shard Monitor",
-                "avatar_url": "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/assets/public-assets/HEAT%20Labs%20Bot%20Profile%20Image.png",
+                "avatar_url": "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Discord-Bot/refs/heads/main/bot-files/assets/public-assets/profile/logo.png",
             }
 
             # Send to webhook
