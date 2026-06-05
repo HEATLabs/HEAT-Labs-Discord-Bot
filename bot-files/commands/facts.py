@@ -82,7 +82,7 @@ class FactsCommands(commands.Cog):
             embed.description = (
                 f"**Did you know?**\n\n"
                 f"{random_fact}\n\n"
-                f"*📚 There are {fact_count} fun facts our database!*\n"
+                f"*📚 There are {fact_count} fun facts in our database!*\n"
                 f"*Use this command again to get another random fact!*"
             )
 
