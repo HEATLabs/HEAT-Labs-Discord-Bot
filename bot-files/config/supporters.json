@@ -1,8 +1,12 @@
 {
   "supporters": [
     {
-      "supporterName": "No Supporters Yet",
-      "supporterDescription": "There are no supporters listed just yet. Be the first to support the HEAT Labs project and help it grow. Use `/support` to see all available ways you can support us."
+      "supporterName": "kamil942",
+      "supporterDescription": "Silver - 5$/Month"
+    },
+    {
+      "supporterName": "Become a Supporter",
+      "supporterDescription": "Want your name featured here? Support HEAT Labs and become part of the community helping us build new tools, services, and projects. Use `/support` to see how you can contribute and get listed as a supporter."
     }
   ]
 }
