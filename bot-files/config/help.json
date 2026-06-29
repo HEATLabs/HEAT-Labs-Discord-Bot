@@ -61,6 +61,12 @@
       "category": "Players"
     },
     {
+      "name": "records",
+      "description": "View the top player records for any game mode and stat category.",
+      "usage": "/records [mode] [category]",
+      "category": "Players"
+    },
+    {
       "name": "random",
       "description": "Get a random tank, map, agent or page.",
       "usage": "/random [type]",
