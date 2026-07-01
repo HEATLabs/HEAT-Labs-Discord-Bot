@@ -103,12 +103,6 @@
       "category": "Utility"
     },
     {
-      "name": "socials",
-      "description": "Get links to official HEAT Labs platforms.",
-      "usage": "/socials",
-      "category": "Utility"
-    },
-    {
       "name": "partners",
       "description": "Exclusive offers from HEAT Labs partners.",
       "usage": "/partners",
