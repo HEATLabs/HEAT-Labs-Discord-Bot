@@ -155,13 +155,7 @@
       "description": "View all HEAT Labs supporters.",
       "usage": "/supporters",
       "category": "Developer"
-    },
-    {
-      "name": "status",
-      "description": "Check the status of our systems.",
-      "usage": "/status",
-      "category": "Utility"
-    },
+    }
     {
       "name": "facts",
       "description": "Get a random fun fact.",
