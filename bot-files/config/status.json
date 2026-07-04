@@ -135,6 +135,46 @@
       "type": "playing",
       "name": "Playing with unstable prototypes",
       "message": "Handle with caution"
+    },
+    {
+      "type": "playing",
+      "name": "Planting mines",
+      "message": "Planting mines"
+    },
+    {
+      "type": "playing",
+      "name": "Playing ALVT",
+      "message": "Playing ALVT"
+    },
+    {
+      "type": "playing",
+      "name": "Camping on Nexus Dam",
+      "message": "Camping on Nexus Dam"
+    },
+    {
+      "type": "playing",
+      "name": "Tampering the Leaderboards",
+      "message": "Tampering the Leaderboards"
+    },
+    {
+      "type": "playing",
+      "name": "Photoshopping Matcha",
+      "message": "Photoshopping Matcha"
+    },
+    {
+      "type": "playing",
+      "name": "Promoting HEAT Labs",
+      "message": "Promoting HEAT Labs"
+    },
+    {
+      "type": "playing",
+      "name": "Screaming at Cloudflare",
+      "message": "Screaming at Cloudflare"
+    },
+    {
+      "type": "playing",
+      "name": "Getting yelled at by cloudflare",
+      "message": "Getting yelled at by cloudflare"
     }
   ]
 }
