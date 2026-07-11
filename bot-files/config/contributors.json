@@ -1,5 +1,9 @@
 {
   "contributors": [
+	{
+      "contributorName": "Adamantium",
+      "contributorDescription": "Created custom 3D render images for M1E1"
+    },
     {
       "contributorName": "Cazaira",
       "contributorDescription": "Created gun elevation and depression statistics for all tanks"
