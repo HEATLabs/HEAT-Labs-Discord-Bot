@@ -31,7 +31,7 @@ class ContactCommands(commands.Cog):
 
             # Contact options
             embed.add_field(
-                name="📝 Submit Community Guides",
+                name="📝 Submit Game Guides",
                 value=(
                     "Have you created a guide for the HEAT Labs community? "
                     "Share your knowledge and help other players!\n"
