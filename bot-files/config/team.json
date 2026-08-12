@@ -13,8 +13,16 @@
       "memberDescription": "Graphic Designer"
     },
 	{
+      "memberName": "Pyogenics",
+      "memberDescription": "3D Content Specialist"
+    },
+	{
+      "memberName": "Adamantium",
+      "memberDescription": "3D Content Specialist"
+    },
+	{
       "memberName": "esmatty",
-      "memberDescription": "Content Writer"
+      "memberDescription": "Lead Content Writer"
     },
 	{
       "memberName": "__Shockwave",
@@ -35,10 +43,6 @@
 	{
       "memberName": "New Members Wanted",
       "memberDescription": "Sound Library Curator"
-    },
-	{
-      "memberName": "Pyogenics",
-      "memberDescription": "3D Content Specialist"
     }
   ]
 }
