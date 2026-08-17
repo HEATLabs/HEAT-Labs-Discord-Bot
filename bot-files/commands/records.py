@@ -10,7 +10,7 @@ from modules.logger import get_logger
 logger = get_logger()
 
 # Constants
-RECORDS_URL = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/player-records.json"
+RECORDS_URL = "https://cdn1.heatlabs.net/player-records.json"
 
 # Mode choices
 MODES = [

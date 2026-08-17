@@ -13,9 +13,9 @@ logger = get_logger()
 class StatisticsCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.config_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/home-stats.json"
-        self.changelog_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/changelog.json"
-        self.game_builds_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/game_builds.json"
+        self.config_file = "https://cdn1.heatlabs.net/home-stats.json"
+        self.changelog_file = "https://cdn1.heatlabs.net/changelog.json"
+        self.game_builds_file = "https://cdn1.heatlabs.net/game_builds.json"
 
     # Load statistics from JSON file
     def load_statistics(self) -> dict:

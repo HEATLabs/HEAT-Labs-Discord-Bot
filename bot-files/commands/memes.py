@@ -13,7 +13,7 @@ logger = get_logger()
 class MemesCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.memes_file = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/memes.json"
+        self.memes_file = "https://cdn1.heatlabs.net/memes.json"
         self.memes = []
         self.load_memes()
 
