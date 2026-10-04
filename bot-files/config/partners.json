@@ -14,6 +14,11 @@
       "pageName": "Printful",
       "pageDescription": "High-quality on-demand printing with no minimums. Global fulfillment, automated order handling, and custom branding options.",
       "pageURL": "https://www.printful.com/printing-services/a/HEATLabs"
+    },
+    {
+      "pageName": "Bot-Hosting",
+      "pageDescription": "Free bot hosting with no credit card required. Supports Node.js, Python, Java, Go, Rust, and more, with GitHub, SFTP, databases, backups, and auto-restarts.",
+      "pageURL": "https://bot-hosting.net/?aff=HEATLabs"
     }
   ]
 }
