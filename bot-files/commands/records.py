@@ -19,6 +19,7 @@ MODES = [
     ("control", "Control"),
     ("hardpoint", "Hardpoint"),
     ("kill-confirmed", "Kill Confirmed"),
+    ("plant-defuse", "Plant & Defuse"),
 ]
 
 # Stat categories with their display names
@@ -33,6 +34,8 @@ CATEGORIES = {
     "intel": {"label": "Intel"},
     "confirms": {"label": "Confirms"},
     "denies": {"label": "Denies"},
+    "plants": {"label": "Plants"},
+    "defuses": {"label": "Defuses"},
 }
 
 # Mode-specific stat availability
@@ -42,6 +45,7 @@ MODE_STATS = {
     "control": ["damage_caused", "destroyed", "assists", "XP", "captures", "damage_blocked", "credits", "intel"],
     "hardpoint": ["damage_caused", "destroyed", "assists", "XP", "captures", "damage_blocked", "credits", "intel"],
     "kill-confirmed": ["damage_caused", "destroyed", "assists", "XP", "confirms", "denies", "credits", "intel"],
+    "plant-defuse": ["damage_caused", "destroyed", "assists", "XP", "plants", "defuses", "credits", "intel"],
 }
 
 # Mode display names
@@ -51,6 +55,7 @@ MODE_DISPLAY = {
     "control": "Control",
     "hardpoint": "Hardpoint",
     "kill-confirmed": "Kill Confirmed",
+    "plant-defuse": "Plant & Defuse",
 }
 
 
@@ -90,7 +95,7 @@ class RecordsCommands(commands.Cog):
         if mode == "global":
             # Combine all modes
             all_records = []
-            for m in ["conquest", "control", "hardpoint", "kill-confirmed"]:
+            for m in ["conquest", "control", "hardpoint", "kill-confirmed", "plant-defuse"]:
                 if m in data.get("records", {}):
                     mode_records = data["records"].get(m, {})
                     for player_id, player_records in mode_records.items():
