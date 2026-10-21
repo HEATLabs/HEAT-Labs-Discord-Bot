@@ -2,7 +2,7 @@
   "contributors": [
 	{
       "contributorName": "Adamantium",
-      "contributorDescription": "Created custom 3D render images for 7 tanks and 1 official game announcement asset."
+      "contributorDescription": "Created custom 3D render images for all tanks and 2 official game announcement assets."
     },
     {
       "contributorName": "Cazaira",
@@ -15,6 +15,10 @@
 	{
       "contributorName": "I_Love_Lettuce",
       "contributorDescription": "Transcribed Utility sound files used in the Soundboard"
+    },
+	{
+      "contributorName": "SenorRagequit",
+      "contributorDescription": "Transcribed English voice lines used in the Soundboard"
     },
 	{
       "contributorName": "donkerennacht",
@@ -35,10 +39,6 @@
 	{
       "contributorName": "Calisota",
       "contributorDescription": "Contributed with 17 replay files used in our internal testing"
-    },
-	{
-      "contributorName": "SenorRagequit",
-      "contributorDescription": "Contributed with 2 replay files used in our internal testing"
     }
   ]
 }
