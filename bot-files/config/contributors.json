@@ -31,6 +31,10 @@
 	{
       "contributorName": "Calisota",
       "contributorDescription": "Contributed with 17 replay files used in our internal testing"
+    },
+	{
+      "contributorName": "SirBarett and I_Love_Lettuce",
+      "contributorDescription": "Additional contributors who helped developed features that are now scrapped / changed"
     }
   ]
 }
