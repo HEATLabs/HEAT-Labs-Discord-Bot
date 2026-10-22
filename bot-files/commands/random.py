@@ -16,9 +16,9 @@ class RandomCommands(commands.Cog):
         self.session = aiohttp.ClientSession()
 
         # JSON data URLs
-        self.tanks_url = "https://cdn1.heatlabs.net/tanks.json"
-        self.maps_url = "https://cdn1.heatlabs.net/maps.json"
-        self.agents_url = "https://cdn1.heatlabs.net/agents.json"
+        self.tanks_url = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/tanks.json"
+        self.maps_url = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/maps.json"
+        self.agents_url = "https://raw.githubusercontent.com/HEATLabs/HEAT-Labs-Configs/refs/heads/main/agents.json"
 
     # Fetch data from URL
     async def fetch_data(self, url: str):
