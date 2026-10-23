@@ -4,6 +4,7 @@ import os
 import asyncio
 import traceback
 from dotenv import load_dotenv
+import modules.cdn
 from modules.logger import get_logger
 from modules.cooldown import global_cooldown
 from modules.embeds import create_embed, add_embed_footer
